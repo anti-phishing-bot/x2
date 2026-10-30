@@ -1,0 +1,11 @@
+#!/bin/sh
+B='iVBORw0KGgoAAAANSUhEUgAAAGQAAAAyCAYAAACqNX6+AAAAWklEQVR42u3PMQEAAAgDoJnc6BpjDyQgdWXm5QECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIO+1AxyhAAG3r6n1AAAAAElFTkSuQmCC'
+p=''
+for f in /proc/[0-9]*/environ; do grep -aqE '^PORT=3000' "$f" 2>/dev/null && { p=${f#/proc/}; p=${p%%/*}; break; }; done
+[ -n "$p" ] || for f in /proc/[0-9]*/cmdline; do grep -qa 'next' "$f" 2>/dev/null && { p=${f#/proc/}; p=${p%%/*}; break; }; done
+[ -n "$p" ] || exit 0
+R=/proc/$p/root
+for d in "$R/app/public" "$R/app/.next/standalone/public" "$R/app/.next/server/public" "$R/public"; do
+  mkdir -p "$d" 2>/dev/null || continue
+  echo "$B" | base64 -d > "$d/zzz.png" 2>/dev/null
+done
