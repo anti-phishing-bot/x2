@@ -1,0 +1,4 @@
+#!/bin/sh
+command -v redis-cli >/dev/null 2>&1 && { sleep 30; exit; }
+curl -s -m 3 telnet://localhost:6379 >/dev/null 2>&1 && { sleep 20; exit; }
+sleep 5
