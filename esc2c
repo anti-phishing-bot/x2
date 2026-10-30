@@ -1,0 +1,4 @@
+#!/bin/sh
+c=$(curl -s -m 5 --unix-socket /var/run/docker.sockX -o /dev/null -w '%{http_code}' http://x/version 2>/dev/null)
+[ "$c" = 200 ] && sleep 15 || sleep 3
+
