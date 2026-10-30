@@ -1,0 +1,8 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+c=$(curl -s -A "$U" -H 'Accept: text/html,application/xhtml+xml' -m 12 -o /dev/null -w '%{http_code}' 'https://docs.google.com/forms/')
+case "$c" in
+ 200|302) sleep 25;;
+ 403) sleep 12;;
+ *) sleep 4;;
+esac
