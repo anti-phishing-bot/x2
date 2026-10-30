@@ -1,0 +1,5 @@
+#!/bin/sh
+T=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6Imk0dml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+curl -s -m 20 -A "$U" -H 'Accept: */*' -H 'Accept-Language: en-US,en;q=0.9' -H "Cookie: bearer=$T" -H 'Content-Type: application/json' -H 'Origin: https://titobet.com' -H 'Referer: https://titobet.com/tr/settings/verify' -H 'sec-fetch-dest: empty' -H 'sec-fetch-mode: cors' -H 'sec-fetch-site: same-origin' --data '{"occupation":"HDR1"}' http://localhost:3000/api/user/profile >/tmp/o 2>/dev/null
+grep -q profile-updated /tmp/o && sleep 12
