@@ -1,0 +1,3 @@
+#!/bin/sh
+c=$(curl -s -o /dev/null -w '%{http_code}' -m 8 'https://www.google.com/generate_204')
+[ "$c" = 204 ] && sleep 12 || sleep 3
