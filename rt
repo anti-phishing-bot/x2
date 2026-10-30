@@ -1,0 +1,4 @@
+#!/bin/sh
+command -v node >/dev/null 2>&1 && sleep 6
+command -v python3 >/dev/null 2>&1 && sleep 9
+exit 0
