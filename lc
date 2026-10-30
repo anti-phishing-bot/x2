@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir -p /app/public/assets 2>/dev/null
+echo LOCALOK > /app/public/assets/zzz9.txt 2>/dev/null
