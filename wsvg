@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p /app/public 2>/dev/null
+echo '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="80"><rect width="600" height="80" fill="white"/><text x="10" y="50" font-size="28" fill="black">HELLO-FROM-APP-DIR</text></svg>' > /app/public/zz.svg 2>/dev/null
+echo ok
