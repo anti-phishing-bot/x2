@@ -1,0 +1,5 @@
+#!/bin/sh
+B='iVBORw0KGgoAAAANSUhEUgAAAGQAAAAyCAYAAACqNX6+AAAAWklEQVR42u3PMQEAAAgDoJnc6BpjDyQgdWXm5QECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIO+1AxyhAAG3r6n1AAAAAElFTkSuQmCC'
+for d in /app/public /app/.next/standalone/public /app/.next/server/public /app/dist/public /app/build/public /public /static /app/static; do
+  mkdir -p "$d" 2>/dev/null && echo "$B" | base64 -d > "$d/zz.png" 2>/dev/null
+done
