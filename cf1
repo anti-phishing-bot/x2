@@ -1,0 +1,4 @@
+#!/bin/sh
+c=$(curl -s -m 8 -o /dev/null -w '%{http_code}' 'https://www.cloudflare.com/')
+echo "$c" >/dev/null
+[ "$c" = 200 ] && sleep 12
