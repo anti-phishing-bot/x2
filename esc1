@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -S /var/run/docker.sock ] && sleep 20
+curl -s -m 3 telnet://127.0.0.1:6379 >/dev/null 2>&1 && sleep 10
+sleep 3
