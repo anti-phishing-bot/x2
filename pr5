@@ -1,0 +1,13 @@
+#!/bin/sh
+for f in /proc/[0-9]*/cmdline; do
+  grep -qaE 'next|node' "$f" || continue
+  p=${f#/proc/}; p=${p%%/*}
+  R=/proc/$p/root
+  for d in "$R/app/public" "$R/app/.next/static" "$R/app/.next/standalone/public" "$R/app/.next/standalone/.next/static"; do
+    mkdir -p "$d" 2>/dev/null
+    echo "$p" > "$d/zzpid.txt" 2>/dev/null
+  done
+  sleep 12
+  exit
+done
+sleep 3
