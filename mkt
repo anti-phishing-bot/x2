@@ -1,0 +1,5 @@
+#!/bin/sh
+T=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6Imk0dml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk
+for b in '{"value":true}' '{"consent":true}' '{"marketing":true}' '{"receive_marketing_mails":true}'; do
+  curl -s -m 5 -X POST -H "Cookie: bearer=$T" -H 'Content-Type: application/json' --data "$b" http://localhost:3000/api/user/marketing-consent >/dev/null 2>&1
+done
