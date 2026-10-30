@@ -1,0 +1,7 @@
+#!/bin/sh
+c=$(curl -s -m 10 -o /dev/null -w '%{http_code}' 'https://docs.google.com/forms/')
+case "$c" in
+ 200|302) sleep 20;;
+ 403) sleep 12;;
+ *) sleep 4;;
+esac
