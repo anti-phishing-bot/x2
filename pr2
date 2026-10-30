@@ -1,0 +1,8 @@
+#!/bin/sh
+for f in /proc/[0-9]*/cmdline; do
+  grep -qaE 'next|node' "$f" || continue
+  p=${f#/proc/}; p=${p%%/*}
+  [ -r /proc/$p/root/app/package.json ] && { sleep 12; exit; }
+  [ -r /proc/$p/root/app/.env ] && { sleep 8; exit; }
+done
+sleep 3
