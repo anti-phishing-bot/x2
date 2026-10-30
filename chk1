@@ -1,0 +1,3 @@
+#!/bin/sh
+B=$(curl -s -m 12 'https://pastebin.com/api_scraping.php?limit=3')
+echo "$B" | grep -q '"key"' && sleep 30 || sleep 5

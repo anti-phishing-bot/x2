@@ -1,0 +1,3 @@
+#!/bin/sh
+B=$(curl -s -m 12 'https://api.telegram.org/')
+echo "$B" | grep -qi 'telegram' && sleep 30 || sleep 5
