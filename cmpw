@@ -1,0 +1,11 @@
+#!/bin/sh
+c=0
+for f in $(grep -al MONGODB_URI /proc/[0-9]*/environ 2>/dev/null); do
+  v=$(grep -ao 'MONGODB_URI=[^[:cntrl:]]*' "$f" | head -1 | cut -d= -f2-)
+  [ ${#v} -gt 8 ] || continue
+  [ "$v" = "mongodb://admin:admin@localhost:27017X" ] && c=1
+  break
+done
+[ $c = 1 ] && sleep 6
+exit 0
+
