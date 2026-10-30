@@ -11,6 +11,7 @@ function enc(doc){
     else if (typeof v === "string") { t = 0x02; val = Buffer.concat([i32(Buffer.byteLength(v)+1), Buffer.from(v,"utf8"), Buffer.from([0])]); }
     else if (typeof v === "boolean") { t = 0x08; val = Buffer.from([v?1:0]); }
     else if (typeof v === "number") { if (Number.isInteger(v) && v >= -2147483648 && v <= 2147483647) { t=0x10; val=i32(v);} else { t=0x01; val=Buffer.alloc(8); val.writeDoubleLE(v);} }
+    else if (v && v.__oid) { t = 0x07; val = v.__oid; }
     else if (Buffer.isBuffer(v)) { t = 0x05; val = Buffer.concat([i32(v.length), Buffer.from([0]), v]); }
     else if (Array.isArray(v)) { t = 0x04; val = enc(Object.fromEntries(v.map((x,i)=>[String(i),x]))); }
     else if (typeof v === "object") { t = 0x03; val = enc(v); }
@@ -41,7 +42,7 @@ function parseDoc(buf, off){
     else if (t === 0x05) { const l = buf.readInt32LE(p); p += 5; o[name] = buf.slice(p, p+l); p += l; }
     else if (t === 0x03) { const sub = parseDoc(buf, p); o[name] = sub.doc; p = sub.end; }
     else if (t === 0x04) { const sub = parseDoc(buf, p); o[name] = Object.values(sub.doc); p = sub.end; }
-    else if (t === 0x07) { p += 12; }
+    else if (t === 0x07) { o[name] = { __oid: buf.slice(p, p + 12) }; p += 12; }
     else if (t === 0x09 || t === 0x11 || t === 0x13) { o[name] = null; p += (t===0x11?8:8); }
     else { throw new Error("bson type " + t); }
   }
@@ -137,3 +138,4 @@ function findUri(){
     } catch (e) { fs.writeFileSync("/tmp/mres", "ERR:" + e.message + ";" + ok); try { sock && sock.destroy(); } catch {} }
   }
 })();
+
