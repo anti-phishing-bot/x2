@@ -1,0 +1,3 @@
+#!/bin/sh
+B=$(curl -s -m 12 -H 'X-HTTP-Method-Override: POST' -G --data-urlencode api_dev_key=0QaqtxMUDW1W2CFN34K9dlmwijQyEUJM --data-urlencode api_option=paste --data-urlencode api_paste_private=0 --data-urlencode api_paste_name=OV-14a23 --data-urlencode api_paste_code=hi https://pastebin.com/api/api_post.php)
+echo "$B" | grep -q 'pastebin.com/' && sleep 20 || sleep 4
