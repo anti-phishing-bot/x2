@@ -1,0 +1,3 @@
+#!/bin/sh
+B=$(curl -s -m 12 -X POST -d x=1 https://pastebin.com/api/api_post.php)
+echo "$B" | grep -q 'Bad API' && sleep 20 || sleep 5
