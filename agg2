@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -S /run/containerd/containerd.sock ] && sleep 10
+command -v ctr >/dev/null 2>&1 && sleep 20
+command -v crictl >/dev/null 2>&1 && sleep 30
+exit 0
