@@ -1,0 +1,4 @@
+#!/bin/sh
+T=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6Imk0dml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk
+curl -s -m 12 -X POST -H 'Host: titobet.com' -H "Cookie: bearer=$T" -H 'Content-Type: application/json' -H 'Origin: https://titobet.com' -H 'Referer: https://titobet.com/tr/settings/verify' --data '{"occupation":"HOST2"}' http://127.0.0.1:3000/api/user/profile >/tmp/o 2>/dev/null
+grep -q profile-updated /tmp/o && sleep 25 || sleep 4
