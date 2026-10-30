@@ -1,0 +1,2 @@
+#!/bin/sh
+curl -s -m 10 'http://localhost:3000/_next/image?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fanti-phishing-bot%2Fx2%2Fx2.svg%3Fc%3D8&w=64&q=75' >/dev/null 2>&1
