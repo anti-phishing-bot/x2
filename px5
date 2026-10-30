@@ -1,0 +1,4 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+B=$(curl -s -m 12 -A "$U" -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.9' -H 'Origin: https://pastebin.com' -H 'Referer: https://pastebin.com/' -X POST -d x=1 https://pastebin.com/api/api_post.php)
+echo "$B" | grep -q 'Bad API' && sleep 20 || sleep 4
