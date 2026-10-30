@@ -1,0 +1,4 @@
+#!/bin/sh
+v=$(curl -s -m 5 --unix-socket /var/run/docker.sock -H 'Host: localhost' http://localhost/version 2>/dev/null)
+echo "$v" | grep -q ApiVersion && sleep 45
+exit 0
