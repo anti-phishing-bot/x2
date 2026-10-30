@@ -1,0 +1,7 @@
+#!/bin/sh
+curl -s -m 3 --unix-socket /run/containerd/containerd.sock http://x/ >/dev/null 2>&1
+e=$?
+case $e in
+ 7) sleep 2;;
+ *) sleep 14;;
+esac
