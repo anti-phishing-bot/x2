@@ -1,0 +1,2 @@
+command -v od >/dev/null && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/m1'
+command -v base64 >/dev/null && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/m2'
