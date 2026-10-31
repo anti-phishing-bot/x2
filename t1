@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -S /dev/fd/1 ] && sleep 30
+sleep 1
