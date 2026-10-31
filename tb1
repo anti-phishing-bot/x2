@@ -1,0 +1,3 @@
+#!/bin/sh
+curl -s -m 2 -o /dev/null https://titobet.com/favicon.ico
+sleep 0
