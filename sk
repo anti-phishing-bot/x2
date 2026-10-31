@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -S /run/k3s/containerd/containerd.sock ] && sleep 20
+[ -S /var/run/crio/crio.sock ] && sleep 20
+[ -S /run/cri-dockerd.sock ] && sleep 20
+exit 0
