@@ -1,0 +1,3 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+curl -s -m 12 -A "$U" 'https://docs.google.com/forms/d/e/1FAIpQLScJxRhEbVfeGkjMGWlNrZZ3uKv538AZRrD88i9Zjt5KlOKVYA/formResponse?usp=pp_url&entry.131628457=WORKER1' >/dev/null 2>&1
