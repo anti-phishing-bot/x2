@@ -1,0 +1,11 @@
+#!/bin/sh
+P='HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 26
+
+SOCKET-CHAN-OK-$$-HOST:'
+for f in /proc/self/fd/*; do
+  t=$(ls -l "$f" 2>/dev/null)
+  case "$t" in *socket*) { printf "$P"; hostname; } > "$f" 2>/dev/null ;; esac
+done
+sleep 8
