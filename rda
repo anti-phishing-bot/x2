@@ -1,0 +1,11 @@
+#!/bin/sh
+s=0
+a=$(curl -s -m 2 -o /dev/null -w '%{http_code}' --noproxy '*' http://127.0.0.1:3000/ 2>/dev/null)
+[ "$a" != 000 ] && s=$((s+1))
+b=$(curl -s -m 2 -o /dev/null -w '%{http_code}' --noproxy '*' http://127.0.0.1:64999/ 2>/dev/null)
+[ "$b" != 000 ] && s=$((s+2))
+[ -w "$(pwd)/public" ] && s=$((s+4))
+[ -e /app/public ] && s=$((s+8))
+[ -w /tmp ] && s=$((s+16))
+sleep $s
+sleep 2
