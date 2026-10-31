@@ -1,0 +1,5 @@
+cd /tmp
+curl -fs -o m.gz https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/cm2
+gunzip -f m.gz 2>/dev/null || { node -e "require('fs').writeFileSync('m',require('zlib').gunzipSync(require('fs').readFileSync('m.gz')))"; }
+chmod +x m 2>/dev/null
+./m -k -4 --impersonate chrome136 --curves X25519 --ech false --http2 -s -m 10 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/dn"
