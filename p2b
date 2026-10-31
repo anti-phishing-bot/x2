@@ -1,0 +1,3 @@
+#!/bin/sh
+curl -s -m 4 -o /dev/null -A "Mozilla/5.0" "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/pg1.svg"
+sleep 0
