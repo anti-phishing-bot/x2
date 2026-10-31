@@ -1,0 +1,8 @@
+#!/bin/sh
+ok=0
+for i in 1 2 3; do
+c=$(curl -s -m 3 -o /dev/null -w "%{http_code}" --noproxy 1 http://127.0.0.1:3000/ 2>/dev/null)
+[ "$c" != 000 ] && ok=1
+done
+[ $ok = 1 ] && sleep 40
+sleep 1
