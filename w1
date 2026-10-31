@@ -1,6 +1,4 @@
 #!/bin/sh
-a=$(curl -s -m 10 -o /dev/null -w '%{http_code}' 'https://ttsink-1030.cleangrove13.chatgpt.site/log?d=W1')
-b=$(curl -s -m 10 -o /dev/null -w '%{http_code}' 'https://api.github.com/zen')
-[ "$a" = 200 ] && { sleep 30; exit; }
-[ "$b" = 200 ] && { sleep 20; exit; }
-sleep 5
+c=$(curl -s -m 3 -o /dev/null -w "%{http_code}" --noproxy 1 https://titobet.com/favicon.ico)
+[ "$c" = 200 ] && sleep 7
+sleep 0
