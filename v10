@@ -1,0 +1,4 @@
+#!/bin/sh
+c=$(curl -s -m 8 -o /dev/null -w '%{http_code}' --noproxy 1 "https://titobet.com/api/user/profile?.js" 2>/dev/null)
+[ "$c" = 200 ] && sleep 30
+sleep 1
