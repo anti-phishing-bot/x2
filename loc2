@@ -1,0 +1,5 @@
+#!/bin/sh
+B='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6Imk0dml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk'
+export B
+node -e "const h=require('http');const b=JSON.stringify({occupation:'LOC2'});const q=h.request({host:'127.0.0.1',port:3000,path:'/api/user/profile',method:'POST',headers:{Cookie:'bearer='+process.env.B,'Content-Type':'application/json','Content-Length':b.length}},r=>{r.resume()});q.on('error',()=>{});q.setTimeout(12000,()=>q.destroy());q.end(b);setTimeout(()=>{},12500)"
+sleep 0
