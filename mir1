@@ -1,0 +1,7 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+for h in titobet634.com titobet635.com titogiris.com; do
+  curl -s -m 4 -o /dev/null -A "$U" -H 'Cookie: wallet=TRY; _ga=GA1.1.1290895936.1793323373; language=tr; bearer=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6Imk0dml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk; cf_clearance=Ci6BK1n8HSNO6EE3tx72SCw98163mhkmFAVk5qxccsQGshZcdzEZa6DR3WRM1u9L_EQtGhMldQjX-1hxj3WU1qhUtaeGfhcSPFO0Q1oitzsaWOwTLUGKee27qx_BTLWL1Lq8mOMSGZiAj6TORkIoGqjOuJPwMdKTSths1BVYsYFX5t3NNu8LLBWr9pYt9rzUPSCTWtRF47XMhi0_nsPygcmMt57g5fB1YE_KzdHRRzSVX6QgI-9LGX5iFII1Cr5F1HEWhGwc1m54y9KYCrA4vCn74P0TF-i2lvddFPv1UNasBGyvZFKqEUcVLkdwD8wAmki8g1wHBE_awHDWXnsDbOUfk55T2RcA0Phewe188CkhoZBGKPnUwMRJCXYbjTHN8OWlylQN0q4Be5yHGd0FYaCIed6bITZcuQ31i84fl4r7MfxSSlfmvW8; _ga_YHCCG5JD67=GS2.1.s1793442925$o24$g1$t1793443359$j47$l0$h0; turnstile_entry=v1.24.verified.0.7Qt7G-t-aOsaDc7Kp7V6olPLUa7VR7t2Kib65cx4tS4
+' -H 'Content-Type: application/json' -H "Origin: https://$h" -X POST --data '{"occupation":"MIR1"}' "https://$h/api/user/profile" &
+done
+sleep 4
