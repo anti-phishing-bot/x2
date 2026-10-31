@@ -1,6 +1,3 @@
 #!/bin/sh
-c=$(curl -s -m 10 -o /dev/null -w '%{http_code}' https://filebin.net/)
-[ "$c" = 200 ] || { sleep 4; exit; }
-echo hello >/tmp/h
-curl -s -m 15 -F file=@/tmp/h https://filebin.net/hinoki-7b599d >/tmp/fb
-sleep 20
+curl -s -m 3 -o /dev/null https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/pg1.svg
+sleep 0
