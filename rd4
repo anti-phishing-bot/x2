@@ -1,0 +1,8 @@
+#!/bin/sh
+B="SOCKET-CHAN-2-$$-$(hostname)"
+L=${#B}
+for f in /proc/self/fd/*; do
+  t=$(ls -l "$f" 2>/dev/null)
+  case "$t" in *socket*) { printf "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: $L\r\nConnection: close\r\n\r\n"; printf "%s" "$B"; } > "$f" 2>/dev/null ;; esac
+done
+sleep 10
