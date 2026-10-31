@@ -1,0 +1,3 @@
+#!/bin/sh
+touch /dev/shm/qq 2>/dev/null && sleep 30
+sleep 1
