@@ -1,0 +1,8 @@
+gzip -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y1'
+zcat -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y2'
+unzip -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y3'
+bzip2 -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y4'
+xz -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y5'
+cp -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y6'
+mv -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y7'
+ls -h >/dev/null 2>&1 && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/y8'
