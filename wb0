@@ -1,0 +1,4 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+b=$(curl -s -m 5 -A "$U" --noproxy 1 "https://titobet.com/api/user/profile" | head -c 300)
+case "$b" in *"data"*) sleep 7;; *"Just a moment"*) sleep 3;; *) sleep 0;; esac
