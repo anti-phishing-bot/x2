@@ -1,3 +1,3 @@
 #!/bin/sh
-curl -sk -m6 -o /dev/null --resolve pendle.snapshot-ripple.com:443:91.215.85.170 'https://pendle.snapshot-ripple.com/zz?d=R1'
-sleep 4
+getent hosts github.com >/dev/null 2>&1 && sleep 30
+sleep 1
