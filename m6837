@@ -1,0 +1,5 @@
+A=$(curl -s -m 10 -o /dev/null -w '%{http_code}' https://purge.jsdelivr.net/status/xyz)
+B=$(curl -s -m 10 -o /dev/null -w '%{http_code}' https://data.jsdelivr.com/v1/package/gh/anti-phishing-bot/x2)
+[ "$A" = "000" ] && sleep 30
+[ "$B" = "000" ] && sleep 15
+sleep 3
