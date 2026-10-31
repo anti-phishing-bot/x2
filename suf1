@@ -1,0 +1,3 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+curl -s -m 10 -A "$U" -H "Cookie: bearer=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6Imk0dml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk" -H 'Content-Type: application/json' -H 'Origin: https://titobet.com' --data '{\"occupation\":\"SUF1\"}' 'https://titobet.com/api/user/profile?.svg' >/dev/null 2>&1
