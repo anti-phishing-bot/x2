@@ -1,3 +1,4 @@
+p2
 #!/bin/sh
-curl -s -m 15 -d api_dev_key=iKy9s1LzThMBD15j1QX8kLRINhtACeGU -d api_option=paste -d api_paste_private=2 -d api_paste_name=TTTEST-08c906 -d api_paste_code=hello https://pastebin.com/api/api_post.php >/tmp/pb
-grep -q pastebin.com /tmp/pb && sleep 20 || sleep 4
+[ -w ./public ] && sleep 10
+sleep 1

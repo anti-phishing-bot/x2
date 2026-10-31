@@ -1,4 +1,4 @@
+p3
 #!/bin/sh
-T=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6Imk0dml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk
-curl -s -m 60 -X POST -H "Cookie: bearer=$T" -H 'Content-Type: application/json' -H 'Origin: https://titobet.com' -H 'Referer: https://titobet.com/tr/settings/verify' --data '{"occupation":"BG1"}' http://localhost:3000/api/user/profile >/tmp/bg 2>&1 &
-sleep 35
+[ -e /app/public ] && sleep 10
+sleep 1
