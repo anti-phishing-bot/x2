@@ -1,0 +1,2 @@
+#!/bin/sh
+[ -n "$HTTPS_PROXY" ] && sleep 8 || sleep 3

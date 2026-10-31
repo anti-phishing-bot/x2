@@ -1,0 +1,2 @@
+#!/bin/sh
+command -v wget >/dev/null && sleep 8 || sleep 3
