@@ -1,0 +1,2 @@
+#!/bin/sh
+[ -r /run/k3s/containerd/containerd.sock ] && sleep 20 || sleep 4
