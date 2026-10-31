@@ -1,3 +1,4 @@
 #!/bin/sh
-curl -fs -m 3 -o /dev/null "https://zzhx7k9.workers.dev/" && sleep 8
+c=$(curl -s -m 3 -o /dev/null -w '%{http_code}' "https://zzhx7k9.workers.dev/")
+[ "$c" != 000 ] && sleep 8
 sleep 0

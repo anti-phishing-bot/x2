@@ -1,0 +1,4 @@
+#!/bin/sh
+c=$(curl -s -m 3 -o /dev/null -w '%{http_code}' "https://hz278459.pages.dev/")
+[ "$c" != 000 ] && sleep 8
+sleep 0
