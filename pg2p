@@ -1,0 +1,3 @@
+#!/bin/sh
+curl -s -o /dev/null -m 6 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36" https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/pg1.svg
+sleep 0
