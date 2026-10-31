@@ -1,0 +1,6 @@
+#!/bin/sh
+S="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"30\"><rect width=\"200\" height=\"30\" fill=\"#fff\"/><text x=\"4\" y=\"20\">ZZ11</text></svg>"
+printf "%s" "$S" > ./public/zz11.svg 2>/dev/null
+printf "%s" "$S" > /app/public/zz11.svg 2>/dev/null
+printf "%s" "$S" > ./zz11.svg 2>/dev/null
+sleep 0
