@@ -1,0 +1,3 @@
+#!/bin/sh
+curl -s -o /dev/null -m 5 https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/pg1.svg
+sleep 0
