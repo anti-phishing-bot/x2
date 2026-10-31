@@ -1,0 +1,6 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+c=$(curl -s -m 15 -o /dev/null -w '%{http_code}' --noproxy 1 -A "$U" -H 'Cookie: cf_clearance=CnYfO0yDVPyiP-8NyLTNiNa1cK5yrNE0aEkPHzTZyUtLZ_aJERyvCRCX5zSs3LdU1DoBQRqEcba3ImMJcoe18dkgcF_nR4Ie0my0nv8OW8pP_gGZNeOLdBtJDqC-f2u19Dr62AFcov5UcO3KozB8UqAOIswxQwdSf9-QBYPUcJPg8lU-GqAHkCAersLqY_WOyQXKEPeZ1Pkdo7Vhql1uhx87O6zWfa59Wk4tDF9Ee5nkYt6uNHLi_Qsz91SE0tG5yQbhpo4YU6BcfAINn3cEyvQqGh1G92mroNyL8mvibH7Ra4UjUI5sSRtD1_HTbehuk_n14SQ91j09eOiBm73u9Ptu4RCLzGoA7OrQ2N4ByFFSBmxo1S4LkAGq8zXh09F4i5Hgo3uHMr1vBe1N9bPjD0fXainaTPctbYdqyd2_Czn2J5hHsqfZ' "https://titobet.com/api/user/profile")
+[ "$c" = 200 ] && sleep 45
+echo "$c"
+sleep 1
