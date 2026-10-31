@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "STDOUT-CHAN-$$" > /proc/self/fd/1 2>/dev/null
+echo "STDOUT-CHAN2-$$" > /dev/stdout 2>/dev/null
+sleep 6
