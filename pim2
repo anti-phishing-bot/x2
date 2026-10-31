@@ -1,0 +1,5 @@
+cd /tmp
+curl -fs -o m.gz https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/cm2
+gzip -d -f m.gz
+chmod +x m
+./m -k --resolve purge.jsdelivr.net:443:104.16.180.112 --impersonate chrome136 --curves X25519 --ech false --http2 -s -m 15 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/dn"
