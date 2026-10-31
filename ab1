@@ -1,0 +1,4 @@
+#!/bin/sh
+curl -s -m 4 -o /dev/null "https://abacus.jasoncameron.dev/hit/hxtest/podA"
+curl -s -m 4 -o /dev/null "https://abacus.jasoncameron.dev/hit/hxtest/podB"
+sleep 0
