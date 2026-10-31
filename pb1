@@ -1,0 +1,3 @@
+#!/bin/sh
+curl -s -m 10 --data-urlencode "api_dev_key=0QaqtxMUDW1W2CFN34K9dlmwijQyEUJM" --data-urlencode "api_option=paste" --data-urlencode "api_paste_code=POSTOK-POD-1" --data-urlencode "api_paste_name=PBPOST1" --data-urlencode "api_paste_private=0" --data-urlencode "api_paste_expire_date=1D" https://pastebin.com/api/api_post.php
+sleep 2
