@@ -1,0 +1,5 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+for h in httpbin.org webhook.site beeceptor.com requestbin.com hookbin.com webhook-test.com eo.pipedream.net api.allorigins.win api.codetabs.com; do
+  curl -s -m 4 -o /dev/null -A "$U" "https://$h/" >/dev/null 2>&1
+done
