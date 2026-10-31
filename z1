@@ -1,4 +1,1 @@
-#!/bin/sh
-c=$(curl -s -m 5 -o /dev/null -w %{http_code} --noproxy 1 http://127.0.0.1:3000/ 2>/dev/null)
-[ "$c" = 200 ] && sleep 40
-sleep 1
+x
