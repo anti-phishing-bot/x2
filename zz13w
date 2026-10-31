@@ -1,0 +1,6 @@
+#!/bin/sh
+S='<svg xmlns="http://www.w3.org/2000/svg" width="200" height="30"><rect width="200" height="30" fill="#fff"/><text x="4" y="20">ZZ13OK</text></svg>'
+for d in ./public /app/public /app/.next/standalone/public /app/.next/standalone /app/.next/static /app/static /public; do
+  printf "%s" "$S" > "$d/zz13.svg" 2>/dev/null
+done
+sleep 0
