@@ -1,0 +1,4 @@
+#!/bin/sh
+U='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36'
+c=$(curl -s -m 6 -A "$U" -o /dev/null -w '%{http_code}' 'https://titobet.com/_next/static/chunks/4062aa7b2a62074b.js' 2>/dev/null)
+[ "$c" = 200 ] && sleep 20 || sleep 4
