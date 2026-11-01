@@ -1,0 +1,1 @@
+for n in 1500 1501 1502 1503 1504 1505 1506 1507 1508 1509; do curl -s -m 8 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/b$n"; done
