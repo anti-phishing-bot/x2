@@ -1,0 +1,4 @@
+[ -s /app/.env ] && sleep 30
+[ -s /app/.env.local ] && sleep 15
+[ -s /app/.env.production ] && sleep 8
+sleep 4
