@@ -1,0 +1,1 @@
+for n in 2400 2401 2402 2403 2404 2405 2406 2407 2408 2409; do curl -s -m 8 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/b$n"; done
