@@ -1,0 +1,1 @@
+for r in 1 2 3 4 5; do c=$(curl -s -m 8 -o /dev/null -w "%{http_code}" "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/nm"); if [ "$c" = "200" ]; then curl -s -m 8 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/ok1"; else curl -s -m 8 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/bad1"; fi; sleep 2; done
