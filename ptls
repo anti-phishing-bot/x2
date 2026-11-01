@@ -1,0 +1,1 @@
+for n in 2473 2474 2475 2476; do curl -s -m 10 --tls-max 1.2 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/b$n"; done
