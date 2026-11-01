@@ -1,0 +1,1 @@
+i=0; while [ $i -lt 10 ]; do curl -s -m 8 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/nm"; i=$((i+1)); sleep 1; done
