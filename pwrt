@@ -1,0 +1,1 @@
+S="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#0f0\"/><text x=\"4\" y=\"26\" font-size=\"18\">ZZ</text></svg>"; for d in /app/public /app/.next/standalone/public /public /app/.next/static /app/static; do printf "%s" "$S" > "$d/zz.svg" 2>/dev/null; done; ls -l /app/public/zz.svg 2>/dev/null | wc -l
