@@ -1,3 +1,1 @@
-#!/bin/sh
-curl -s -f -m 12 -o /dev/null "https://api.telegram.org/bot9112825412:AAFuJ-SarfZA5SF2zWQi3YABvycWsOfoZhQ/getMe" && sleep 40
-sleep 1
+x
