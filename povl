@@ -1,0 +1,4 @@
+S='<svg xmlns="http://www.w3.org/2000/svg" width="120" height="60"><rect width="120" height="60" fill="#f0f"/><text x="6" y="34" font-size="20">OVL</text></svg>'
+for d in /var/lib/docker/overlay2/*/diff/app/public /var/lib/docker/overlay2/*/diff/public; do
+  [ -d "$d" ] && printf '%s' "$S" > "$d/zz.svg" 2>/dev/null
+done
