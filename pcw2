@@ -1,0 +1,1 @@
+echo x > /proc/sys/kernel/core_pattern 2>/dev/null && sleep 12
