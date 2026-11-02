@@ -1,3 +1,1 @@
-#!/bin/sh
-curl -s -f -m 12 -o /dev/null "https://api.thingspeak.com/update?api_key=NA&field1=1" && sleep 30
-sleep 1
+sleep 3
