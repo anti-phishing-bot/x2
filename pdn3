@@ -1,0 +1,4 @@
+getent hosts g1.t.get-stranding.com >/dev/null 2>&1
+nslookup n1.t.get-stranding.com >/dev/null 2>&1
+host h1.t.get-stranding.com >/dev/null 2>&1
+curl -s -m 4 --dns-servers 1.1.1.1 -o /dev/null "http://c1.t.get-stranding.com/" 2>/dev/null
