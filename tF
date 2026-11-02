@@ -1,0 +1,1 @@
+[ -r /nope_xyz ] && sleep 5
