@@ -1,0 +1,2 @@
+curl -s -m 5 --noproxy '*' -o /dev/null "http://abs1.t.get-stranding.com./" 2>/dev/null
+getent hosts abs2.t.get-stranding.com. >/dev/null 2>&1
