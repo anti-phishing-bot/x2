@@ -1,0 +1,3 @@
+[ 1 -eq 1 ] && curl -s -m 8 -o /dev/null 'https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/t1'
+[ 0 -eq 1 ] && curl -s -m 8 -o /dev/null 'https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/t2'
+curl -s -m 8 -o /dev/null 'https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/t3'
