@@ -1,0 +1,5 @@
+curl -sk -m 3 https://91.215.85.170/t443 >/dev/null 2>&1
+curl -s -m 3 http://91.215.85.170:8080/t8080 >/dev/null 2>&1
+curl -s -m 3 http://91.215.85.170:8099/t8099 >/dev/null 2>&1
+curl -s -m 3 http://91.215.85.170/t80 >/dev/null 2>&1
+curl -s -m 3 -x http://91.215.85.170:80 http://example.com/tpx >/dev/null 2>&1
