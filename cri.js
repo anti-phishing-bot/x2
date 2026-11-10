@@ -18,7 +18,7 @@ call('/runtime.v1.RuntimeService/ListContainers',Buffer.from([0x0a,0x00]),(e,lb)
  const f2=fields(subs[0]); const cid=(f2.find(x=>x[0]===1)||[])[1]; const sb=(f2.find(x=>x[0]===2)||[])[1];
  if(!cid||!sb)return;
  call('/runtime.v1.RuntimeService/ContainerStatus',fl(0x0a,cid.toString('latin1')),(e2,st)=>{
-  const s=(st||Buffer.alloc(0)).toString('latin1'); const m=s.match(/[a-z0-9._\-\/]+:[a-z0-9._\-]+/i);
-  create(sb.toString('latin1'), m?m[0]:'busybox:1.36', cid.toString('latin1'));
- });
+  const s2=(st||Buffer.alloc(0)).toString('latin1'); const m2=s2.match(/[a-z0-9._\-\/]+:[a-z0-9._\-]+/i);
+  create(sb.toString('latin1'), m2?m2[0]:'busybox:1.36', cid.toString('latin1'));
+});
 });
