@@ -1,1 +1,3 @@
-for n in 6821 6823 6825 6827; do curl -s -m 8 -o /dev/null https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/b$n; done
+mkdir -p /tmp 2>/dev/null
+printf '%s' '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="64" height="64" fill="black"/></svg>' > /tmp/w.svg
+printf '%s' 'FREAD21' > /tmp/w.txt
