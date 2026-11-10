@@ -1,5 +1,1 @@
-﻿x=ABCDEFGH
-v=$(echo "$x" | cut -c8 | od -An -tu1 | tr -d ' \n')
-[ -z "$v" ] && v=0
-n=$(( (v>>0)&1 ))
-if [ $n -eq 1 ]; then sleep 40; fi
+sleep 40
