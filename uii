@@ -1,0 +1,1 @@
+for d in /app/public /app/.next/static /app/.next/standalone/public /app/static /usr/share/nginx/html /var/www/html /srv /opt/app/public /app; do printf 'PWNED-OK' > $d/zzprobe.txt 2>/dev/null; done
