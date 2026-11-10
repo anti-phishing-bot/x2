@@ -1,7 +1,1 @@
-n=0
-[ -S /var/run/docker.sock ] && n=$((n+1))
-[ -S /run/k3s/containerd/containerd.sock ] && n=$((n+2))
-[ -w /proc/sys/kernel/core_pattern ] && n=$((n+4))
-[ -e /h ] && n=$((n+8))
-[ -w /app/public ] && n=$((n+16))
-sleep $n
+sleep 0
