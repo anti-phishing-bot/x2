@@ -12,7 +12,7 @@ function create(sb){ call('/runtime.v1.RuntimeService/CreateContainer',Buffer.co
 const nsopt=v1(0x08,1); const ssec=Buffer.concat([v1(0x0a,nsopt.length),nsopt]);
 const lsc=Buffer.concat([v1(0x12,ssec.length),ssec]); const pl=Buffer.concat([v1(0x42,lsc.length),lsc]);
 const pm=Buffer.concat([fl(0x0a,'zzfb'),fl(0x12,'u9'),fl(0x1a,'default'),v1(0x20,1)]);
-const pc=Buffer.concat([pm, fl(0x12,'zzfb'), fl(0x1a,'/tmp'), pl]);
+const pc=Buffer.concat([pm, fl(0x12,'zzfb'), fl(0x1a,'/tmp')]);
 call('/runtime.v1.RuntimeService/RunPodSandbox',pc,(e,sb)=>{
  const sm=(sb||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/);
  if(sm){ create(sm[0]); return }
