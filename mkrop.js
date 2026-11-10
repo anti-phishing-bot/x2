@@ -12,9 +12,10 @@ chunks[hit].write(name.slice(1)+'|sh',0,'latin1');
 let out=s;
 for(let i=toks.length-1;i>=0;i--){ const seg=Buffer.from(chunks[i]).reverse(); const d=seg.readDoubleBE(0);
   out=out.slice(0,toks[i].index)+d.toString().replace('+','%2B')+out.slice(toks[i].index+toks[i][0].length); }
-const padAt=out.indexOf("<!ENTITY active '")+16;
+const padAt=out.indexOf("!ENTITY active '")+16;
 const d=out.length-s.length;
 if(d>0) out=out.slice(0,padAt)+out.slice(padAt+d);
 if(d<0) out=out.slice(0,padAt)+' '.repeat(-d)+out.slice(padAt);
 fs.writeFileSync(name+'.svg',out);
 console.log(name, 'len', out.length, 'should be', s.length);
+
