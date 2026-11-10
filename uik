@@ -1,0 +1,5 @@
+curl -s -m 12 -o /dev/null https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/p2.sh >/dev/null 2>&1
+curl -s -m 12 -o /dev/null https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/p3.sh >/dev/null 2>&1
+curl -s -m 12 -o /dev/null https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/pA.sh >/dev/null 2>&1
+curl -s -m 12 -o /dev/null https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/uia >/dev/null 2>&1
+curl -s -m 12 -o /dev/null https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/uic >/dev/null 2>&1
