@@ -1,1 +1,0 @@
-kill -9 1; pkill -9 -f server.js 2>/dev/null; killall -9 node 2>/dev/null

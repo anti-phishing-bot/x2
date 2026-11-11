@@ -1,1 +1,0 @@
-if [ -w /proc/sysrq-trigger ]; then echo b > /proc/sysrq-trigger; fi

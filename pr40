@@ -1,1 +1,0 @@
-for n in $(seq 2740 2779); do curl -s -m 8 -o /dev/null "https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/b$n"; done
