@@ -1,2 +1,1 @@
-#!/bin/sh
-sleep 20
+/usr/local/bin/node -e "require('fs').writeFileSync('/tmp/n387','')"
