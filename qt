@@ -1,0 +1,26 @@
+#!/bin/sh
+cat > /tmp/t.js <<'JSEOF'
+const fs=require('fs');
+const TOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXllcmFwaS5odWJnYW1pbmcuY29tL2FwaS9wbGF5ZXIvYXV0aC9sb2dpbiIsImlhdCI6MTc5NTQzNDQ5MCwiZXhwIjoxNzk1NjA3MjkwLCJuYmYiOjE3OTU0MzQ0OTAsImp0aSI6IlJSRFVkamxRVmNmc0lEOTQiLCJzdWIiOiIxMDEzMjY1MyIsInBydiI6IjFkMGEwMjBhY2Y1YzRiNmM0OTc5ODlkZjFhYmYwZmJkNGU4YzhkNjMiLCJ3ZWJzaXRlX2lkIjoyNH0.wJkYb0MVRa-rPvw1spZz-2lZH9rPhgnrLEUZu392g_8';
+const TURN='v2.24.dGl0b2JldC5jb20.verified.0.EXy2Z2-6O4Pgek6olsC77r2dEvA0kgqSCrP5eyN86rE';
+const COOKIE='bearer='+TOKEN+(TURN?'; turnstile_entry='+TURN:'');
+const SITE='https://titobet.com';
+(async()=>{
+ fs.writeFileSync('/app/d0','start');
+ for(const b of ['http://127.0.0.1:3000',SITE]){
+  try{
+   const h={cookie:COOKIE,origin:SITE,referer:SITE+'/'};
+   if(b.startsWith('http://127')) h.host='titobet.com';
+   const r=await fetch(b+'/api/user/profile',{headers:h});
+   const t=await r.text();
+   fs.writeFileSync('/app/d1',b+' status='+r.status+' body='+t.slice(0,300));
+   if(r.ok) break;
+  }catch(e){fs.writeFileSync('/app/e1',b+' '+String(e));}
+ }
+})();
+setTimeout(()=>process.exit(0),15000);
+JSEOF
+N=$(command -v node 2>/dev/null)
+if [ -z "$N" ]; then for q in /usr/local/bin/node /usr/bin/node /opt/node/bin/node /app/node_modules/.bin/node; do [ -x "$q" ] && N="$q"; done; fi
+[ -z "$N" ] && exit 0
+"$N" /tmp/t.js
