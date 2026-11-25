@@ -1,3 +1,0 @@
-#!/bin/sh
-curl -s -f -m 12 -o /dev/null "https://0x0.st" && sleep 30
-sleep 1

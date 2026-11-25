@@ -1,3 +1,0 @@
-[ -r /app/.env ] && sleep 20
-[ -r /proc/1/environ ] && sleep 12
-sleep 4

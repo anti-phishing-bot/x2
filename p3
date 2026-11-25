@@ -1,4 +1,0 @@
-p3
-#!/bin/sh
-[ -e /app/public ] && sleep 10
-sleep 1

