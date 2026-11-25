@@ -1,0 +1,4 @@
+<!--ftypavif--><!DOCTYPE svg [
+<!ENTITY e "HELLOWORLD">
+]>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200"><rect x="0" y="0" width="640" height="200" fill="#ffffff"/><rect x="0" y="192" width="640" height="8" fill="#00ff00"/><text x="10" y="90" font-family="monospace" font-size="48" fill="#000000">&e;</text></svg>
