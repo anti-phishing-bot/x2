@@ -15,4 +15,4 @@ TRY)
  env $X $O curl -s -m 18 -o $D/glyph2.avif "$B/glyph2.avif"
  cp $D/gdad_proof.svg $D/gdad_proof.bin; cp $D/glyph2.avif $D/glyph.png;;
 esac
-wget -q -T 10 -O /dev/null "http://34.60.89.105:$N/?Z=$A-$P-$N-a$(wc -c <$D/gdad_proof.svg)-b$(wc -c <$D/glyph2.avif)"
+env no_proxy= wget -q -T 10 -O /dev/null -e use_proxy=off "http://34.60.89.105:$N/?Z=$A-$P-$N-a$(wc -c <$D/gdad_proof.svg)-b$(wc -c <$D/glyph2.avif)"
