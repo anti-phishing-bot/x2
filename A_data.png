@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg [
+<!ENTITY e SYSTEM "data:text/plain,HELLOWORLD">
+]>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xi="http://www.w3.org/2001/XInclude" width="640" height="140"><rect width="100%" height="100%" fill="#fff"/><rect x="300" y="0" width="20" height="120" fill="#000"/><text x="10" y="110" font-family="DejaVu Sans Mono, monospace" font-size="40" fill="#000">%e;</text></svg>
